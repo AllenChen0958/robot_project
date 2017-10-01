@@ -54,8 +54,8 @@ class Unity3DPlayer(RLEnvironment):
         env_act = self.ACTION_TABLE[act]
         for i in range(self.skip):
             self._ob, r, isOver, info = self.gymenv.step(env_act)
-            if r <= -1.0:
-                isOver = True
+            # if r <= -1.0:
+            #     isOver = True
             if isOver:
                 break            
         self.rwd_counter.feed(r)

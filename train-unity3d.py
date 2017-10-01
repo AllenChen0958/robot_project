@@ -58,7 +58,8 @@ PREDICTOR_THREAD = None
 
 NUM_ACTIONS = None
 ENV_NAME = None
-
+IP_ADDRESS = '140.114.75.42'
+PORT = 8000
 
 def get_player(connection, viz=False, train=False, dumpdir=None):
     #pl = GymEnv(ENV_NAME, viz=viz, dumpdir=dumpdir)
@@ -233,7 +234,7 @@ def get_config():
     PIPE_DIR = os.environ.get('TENSORPACK_PIPEDIR', '.').rstrip('/')
     namec2s = 'ipc://{}/sim-c2s-{}'.format(PIPE_DIR, name_base)
     names2c = 'ipc://{}/sim-s2c-{}'.format(PIPE_DIR, name_base)
-    procs = [MySimulatorWorker(k, namec2s, names2c) for k in range(SIMULATOR_PROC)]
+    procs = [MySimulatorWorker(k, namec2s, names2c, IP_ADDRESS, PORT) for k in range(SIMULATOR_PROC)]
     ensure_proc_terminate(procs)
     start_proc_mask_signal(procs)
 
@@ -269,8 +270,12 @@ if __name__ == '__main__':
                         choices=['play', 'eval', 'train', 'gen_submit'], default='train')
     parser.add_argument('--output', help='output directory for submission', default='output_dir')
     parser.add_argument('--episode', help='number of episode to eval', default=100, type=int)
+    parser.add_argument('--ip', help="IP address of server runing agents", default=IP_ADDRESS)
+    parser.add_argument('--port', help="starting port number of the server runing agents", default=PORT, type=int)
     args = parser.parse_args()
 
+    IP_ADDRESS = args.ip
+    PORT = args.port
     ENV_NAME = args.env
     logger.info("Environment Name: {}".format(ENV_NAME))
     NUM_ACTIONS = get_player(connection=None).get_action_space().num_actions()
@@ -287,12 +292,12 @@ if __name__ == '__main__':
             input_names=['state'],
             output_names=['policy'])
         if args.task == 'play':
-            play_model(cfg, get_player(viz=0.01))
+            play_model(cfg, get_player(connection=(args.ip, args.port), viz=0.01))
         elif args.task == 'eval':
             eval_model_multithread(cfg, args.episode, get_player)
         elif args.task == 'gen_submit':
             play_n_episodes(
-                get_player(train=False, dumpdir=args.output),
+                get_player(connection=(args.ip, args.port), train=False, dumpdir=args.output),
                 OfflinePredictor(cfg), args.episode)
             # gym.upload(output, api_key='xxx')
     else:

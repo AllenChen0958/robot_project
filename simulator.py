@@ -25,7 +25,7 @@ from tensorpack.utils.concurrency import LoopThread, ensure_proc_terminate
 __all__ = ['SimulatorProcess', 'SimulatorMaster',
            'SimulatorProcessStateExchange',
            'TransitionExperience']
-IP_ADDRESS = '140.114.75.42'
+
 
 class TransitionExperience(object):
     """ A transition of state, or experience"""
@@ -57,7 +57,7 @@ class SimulatorProcessStateExchange(SimulatorProcessBase):
     A process that simulates a player and communicates to master to
     send states and receive the next action
     """
-    def __init__(self, idx, pipe_c2s, pipe_s2c):
+    def __init__(self, idx, pipe_c2s, pipe_s2c, ip, port):
         """
         Args:
             idx: idx of this process
@@ -69,7 +69,7 @@ class SimulatorProcessStateExchange(SimulatorProcessBase):
 
     def run(self):
 
-        connection = (IP_ADDRESS, int(self.idx + 8000))
+        connection = (ip, int(self.idx + int(port)))
         print(connection)
         player = self._build_player(connection=connection)
         context = zmq.Context()
