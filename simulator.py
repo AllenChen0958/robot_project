@@ -66,10 +66,12 @@ class SimulatorProcessStateExchange(SimulatorProcessBase):
         super(SimulatorProcessStateExchange, self).__init__(idx)
         self.c2s = pipe_c2s
         self.s2c = pipe_s2c
+        self.ip = ip
+        self.port = port
 
     def run(self):
 
-        connection = (ip, int(self.idx + int(port)))
+        connection = (self.ip, int(self.idx + int(self.port)))
         print(connection)
         player = self._build_player(connection=connection)
         context = zmq.Context()
