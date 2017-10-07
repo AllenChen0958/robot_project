@@ -65,7 +65,7 @@ def get_player(connection, viz=False, train=False, dumpdir=None):
     #pl = GymEnv(ENV_NAME, viz=viz, dumpdir=dumpdir)
     pl = Unity3DPlayer(connection=connection, skip=1)
     if connection != None:
-        pl = MapPlayerState(pl, lambda img: cv2.resize(img, IMAGE_SIZE[::-1]))
+        pl = MapPlayerState(pl, lambda img: np.reshape(cv2.resize(img, IMAGE_SIZE[::-1]),(IMAGE_SIZE + (int(CHANNEL/FRAME_HISTORY),))))
         pl = HistoryFramePlayer(pl, FRAME_HISTORY)
         if not train:
             pl = PreventStuckPlayer(pl, 30, 1)
@@ -293,6 +293,9 @@ if __name__ == '__main__':
             output_names=['policy'])
         if args.task == 'play':
             play_model(cfg, get_player(connection=(args.ip, args.port), viz=0.01))
+            # pl = get_player(connection=(args.ip, args.port))
+            # pl.action(0)
+            # print(pl.current_state())
         elif args.task == 'eval':
             eval_model_multithread(cfg, args.episode, get_player)
         elif args.task == 'gen_submit':

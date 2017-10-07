@@ -15,14 +15,21 @@ SCENE_OP_CODE_ACTION = 0x01ff
 SCENE_OP_CODE_RESET = 0xff
 SCENE_OP_CODE_NOOP = 0x00
 
+USE_DEPTH = False
+
 def image_rgba32_to_bgr(data):
     data = (data[:,:,:3] * 255.0).astype(np.uint8)
     data = cv2.cvtColor(data, cv2.COLOR_RGB2BGR)
     return data
     
 def image_unity3d_to_cv2(data):
-    data = image_rgba32_to_bgr(data)
-    data = np.flip(data, axis=0)
+    if USE_DEPTH is True:
+        data = (data[:,:,:1] * 255.0).astype(np.uint8)
+        data = np.flip(data, axis=0)
+        data = np.reshape(data, (256,256,1))
+    else:
+        data = image_rgba32_to_bgr(data)
+        data = np.flip(data, axis=0)
     return data
     
 def recvall(sock, count):
@@ -92,7 +99,7 @@ class ScalarRewardSpace(object):
         return reward[0]
 
 class Unity3DEnvironment(object):
-    def __init__(self, server_address=('140.114.75.10', 8888), scene='navigation-v0'):
+    def __init__(self, server_address=('140.114.75.42', 8000), scene='navigation-v0'):
         # Open Unity3D
         #cmd = 'DISPLAY=:0 $UNITY_SCENES/%s/%s.x86_64 port %d' % (scene, scene, server_address[1])
         #self.proc = subprocess.Popen([cmd], shell=True)
@@ -158,21 +165,71 @@ class Unity3DEnvironment(object):
         raw_data = recvall(self.sock, self.observation_space.size + self.reward_space.size + self.done_size)
         self.last_observation = self.observation_space.observe(raw_data[:self.observation_space.size])
         self.last_reward = self.reward_space.unpack(raw_data[self.observation_space.size:self.observation_space.size + self.reward_space.size])
-        done = bool((raw_data[((self.observation_space.size + self.reward_space.size))]))
-        
+        if sys.version_info[0] >= 3:
+            done = bool((raw_data[((self.observation_space.size + self.reward_space.size))]))
+        else:
+            done = bool(np.fromstring(raw_data[((self.observation_space.size + self.reward_space.size))], np.uint8)[0])
+        # print("done: {}".format(done))
+        # print(np.shape(self.last_observation))
+        # exit()
         return self.last_observation, self.last_reward, done, None
 
+# if __name__ == '__main__':
+#     env = Unity3DEnvironment()
+    
+#     for episode in range(1000):
+#         obs = env.reset()
+#         for t in range(10000):
+#             #env.render()
+#             #act = env.sample() * 2.0
+#             act = np.array([0])
+#             obs, reward, done, _ = env.step(act, non_block=False)
+#             print (obs.shape)
+#             print (act, reward, done)
+        
+#             if done:
+#                 break
+#         print ('Episode %d' % (episode))
+#     env.close()
+ACTION_TABLE = [(0.0,),
+                (0.5,), # Forward-Right
+                (0.3,), # Backward-Right
+                (-0.5,), # Forward-Left
+                (-0.3,) ] # Backward-Left
+import predictor
 if __name__ == '__main__':
     env = Unity3DEnvironment()
-    
+    p = predictor.getPredictor("./train_log/train-unity3d-navigation_v3_rand_move_seg/model-64800.index")
     for episode in range(1000):
         obs = env.reset()
+        obs = predictor.reszieImage(obs)
+        obs_stack = np.repeat([obs], predictor.FRAME_HISTORY, axis=0)
+        obs_stack = np.concatenate(obs_stack, axis=2)
         for t in range(10000):
             #env.render()
             #act = env.sample() * 2.0
-            act = np.array([0])
-            obs, reward, done, _ = env.step(act, non_block=False)
-            print (obs.shape)
+            # act = np.array([0])
+            act = p(obs_stack)
+            act = ACTION_TABLE[act[0]]
+            obs_stack = []
+            for i in range(predictor.FRAME_HISTORY):
+                obs, reward, done, _ = env.step(act, non_block=False)
+                obs = predictor.reszieImage(obs)
+                obs_stack.append(obs)
+            if done is True:
+                    try:
+                        r = np.repeat([obs],predictor.FRAME_HISTORY-len(obs_stack),axis=0)
+                        if len(obs_stack) == 0:
+                            obs_stack = r
+                        elif len(obs_stack) < predictor.FRAME_HISTORY:
+                            obs_stack = np.concatenate((obs_stack, r), axis=0)
+                        break
+                    except ValueError:
+                        print ("obs_stack.shape: {}, r.shape: {}, repeat times: {}, i:{}".format(np.shape(obs_stack),
+                            np.shape(r), predictor.FRAME_HISTORY-len(obs_stack), i))
+                        exit()
+            obs_stack = np.concatenate(obs_stack, axis=2)
+            print (obs_stack.shape)
             print (act, reward, done)
         
             if done:

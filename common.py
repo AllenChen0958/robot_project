@@ -19,13 +19,13 @@ from tensorpack.utils.utils import get_tqdm_kwargs
 def play_one_episode(player, func, verbose=False):
     def f(s):
         spc = player.get_action_space()
-        act = func([[s]])[0][0].argmax()
+        act = func([[s]])[0][0].argmax() # func is OfflinePredictor
         if random.random() < 0.001:
             act = spc.sample()
         if verbose:
             print(act)
         return act
-    return np.mean(player.play_one_episode(f))
+    return np.mean(player.play_one_episode(f)) #play_one_episode() is in envbase.py which merely throw state into f(s)
 
 
 def play_model(cfg, player):

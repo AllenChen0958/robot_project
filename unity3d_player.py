@@ -57,6 +57,7 @@ class Unity3DPlayer(RLEnvironment):
             # if r <= -1.0:
             #     isOver = True
             if isOver:
+                # print("isOver")
                 break            
         self.rwd_counter.feed(r)
         if isOver:
