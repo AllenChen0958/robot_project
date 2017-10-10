@@ -1,0 +1,1519 @@
+[32m[1002 02:23:27 @logger.py:73][0m Argv: train-unity3d.py --env navigation_v3_rand_move_seg --gpu 1
+[32m[1002 02:23:27 @train-unity3d.py:226][0m [Batch-A3C] Train on gpu 0 and infer on gpu 0
+[32m[1002 02:23:27 @param.py:189][0m Use train_log/train-unity3d-navigation_v3_rand_move_seg/hyper.txt to control hyperparam learning_rate.
+[32m[1002 02:23:27 @param.py:189][0m Use train_log/train-unity3d-navigation_v3_rand_move_seg/hyper.txt to control hyperparam entropy_beta.
+[32m[1002 02:23:27 @input_source.py:222][0m Setting up the queue for CPU prefetching ...
+[32m[1002 02:23:27 @common.py:130][0m conv0 input: [None, 84, 84, 12]
+[32m[1002 02:23:27 @common.py:138][0m conv0 output: [None, 84, 84, 32]
+[32m[1002 02:23:27 @common.py:130][0m pool0 input: [None, 84, 84, 32]
+[32m[1002 02:23:27 @common.py:138][0m pool0 output: [None, 42, 42, 32]
+[32m[1002 02:23:27 @common.py:130][0m conv1 input: [None, 42, 42, 32]
+[32m[1002 02:23:27 @common.py:138][0m conv1 output: [None, 42, 42, 32]
+[32m[1002 02:23:27 @common.py:130][0m pool1 input: [None, 42, 42, 32]
+[32m[1002 02:23:27 @common.py:138][0m pool1 output: [None, 21, 21, 32]
+[32m[1002 02:23:27 @common.py:130][0m conv2 input: [None, 21, 21, 32]
+[32m[1002 02:23:27 @common.py:138][0m conv2 output: [None, 21, 21, 64]
+[32m[1002 02:23:27 @common.py:130][0m pool2 input: [None, 21, 21, 64]
+[32m[1002 02:23:27 @common.py:138][0m pool2 output: [None, 10, 10, 64]
+[32m[1002 02:23:27 @common.py:130][0m conv3 input: [None, 10, 10, 64]
+[32m[1002 02:23:27 @common.py:138][0m conv3 output: [None, 10, 10, 64]
+[32m[1002 02:23:27 @common.py:130][0m fc0 input: [None, 10, 10, 64]
+[32m[1002 02:23:27 @common.py:138][0m fc0 output: [None, 512]
+[32m[1002 02:23:27 @common.py:130][0m fc-pi input: [None, 512]
+[32m[1002 02:23:27 @common.py:138][0m fc-pi output: [None, 5]
+[32m[1002 02:23:27 @common.py:130][0m fc-v input: [None, 512]
+[32m[1002 02:23:27 @common.py:138][0m fc-v output: [None, 1]
+[32m[1002 02:23:28 @model_utils.py:47][0m [36mModel Parameters: 
+[0mname           shape               dim
+-------------  --------------  -------
+conv0/W:0      [5, 5, 12, 32]     9600
+conv0/b:0      [32]                 32
+conv1/W:0      [5, 5, 32, 32]    25600
+conv1/b:0      [32]                 32
+conv2/W:0      [4, 4, 32, 64]    32768
+conv2/b:0      [64]                 64
+conv3/W:0      [3, 3, 64, 64]    36864
+conv3/b:0      [64]                 64
+fc0/W:0        [6400, 512]     3276800
+fc0/b:0        [512]               512
+prelu/alpha:0  []                    1
+fc-pi/W:0      [512, 5]           2560
+fc-pi/b:0      [5]                   5
+fc-v/W:0       [512, 1]            512
+fc-v/b:0       [1]                   1[36m
+Total #vars=15, #param=3385415 (12.91 MB assuming all float32)[0m
+[32m[1002 02:23:28 @base.py:137][0m Setup callbacks graph ...
+[32m[1002 02:23:28 @predictor_factory.py:59][0m Building predictor tower 'towerp0' on device /gpu:0 ...
+[32m[1002 02:23:28 @summary.py:30][0m Maintain moving average summary of 17 tensors.
+[32m[1002 02:23:28 @base.py:141][0m Creating the session ...
+[32m[1002 02:25:08 @sesscreate.py:34][0m Global variables initialized.
+[32m[1002 02:25:08 @base.py:145][0m Initializing the session ...
+[32m[1002 02:25:08 @base.py:152][0m Graph Finalized.
+[32m[1002 02:25:08 @concurrency.py:36][0m Starting EnqueueThread ...
+[32m[1002 02:25:08 @concurrency.py:36][0m Starting SimulatorMaster ...
+[32m[1002 02:25:08 @base.py:189][0m Start Epoch 1 ...
+[32m[1002 03:19:08 @base.py:199][0m Epoch 1 (global_step 1200) finished, time:3240.26 sec.
+[32m[1002 03:19:09 @saver.py:85][0m Model saved to train_log/train-unity3d-navigation_v3_rand_move_seg/model-1200.
+[32m[1002 03:19:09 @monitor.py:310][0m SummaryGradient/conv0/W/rms: 0.0008213
+[32m[1002 03:19:09 @monitor.py:310][0m SummaryGradient/conv0/b/rms: 0.0027014
+[32m[1002 03:19:09 @monitor.py:310][0m SummaryGradient/conv1/W/rms: 0.00045623
+[32m[1002 03:19:09 @monitor.py:310][0m SummaryGradient/conv1/b/rms: 0.0034147
+[32m[1002 03:19:09 @monitor.py:310][0m SummaryGradient/conv2/W/rms: 0.00033464
+[32m[1002 03:19:09 @monitor.py:310][0m SummaryGradient/conv2/b/rms: 0.0031745
+[32m[1002 03:19:09 @monitor.py:310][0m SummaryGradient/conv3/W/rms: 0.00029765
+[32m[1002 03:19:09 @monitor.py:310][0m SummaryGradient/conv3/b/rms: 0.0096172
+[32m[1002 03:19:09 @monitor.py:310][0m SummaryGradient/fc-pi/W/rms: 0.00047313
+[32m[1002 03:19:09 @monitor.py:310][0m SummaryGradient/fc-pi/b/rms: 0.0029653
+[32m[1002 03:19:09 @monitor.py:310][0m SummaryGradient/fc-v/W/rms: 0.0046429
+[32m[1002 03:19:09 @monitor.py:310][0m SummaryGradient/fc-v/b/rms: 0.025994
+[32m[1002 03:19:09 @monitor.py:310][0m SummaryGradient/fc0/W/rms: 4.4094e-05
+[32m[1002 03:19:09 @monitor.py:310][0m SummaryGradient/fc0/b/rms: 0.00070574
+[32m[1002 03:19:09 @monitor.py:310][0m SummaryGradient/prelu/alpha/rms: 0.017931
+[32m[1002 03:19:09 @monitor.py:310][0m cost: -0.0021063
+[32m[1002 03:19:09 @monitor.py:310][0m importance: 1
+[32m[1002 03:19:09 @monitor.py:310][0m input_queue_size: 0
+[32m[1002 03:19:09 @monitor.py:310][0m learning_rate: 0.001
+[32m[1002 03:19:09 @monitor.py:310][0m policy_loss: -0.38514
+[32m[1002 03:19:09 @monitor.py:310][0m predict_reward: -0.93683
+[32m[1002 03:19:09 @monitor.py:310][0m rms_advantage: 0.10797
+[32m[1002 03:19:09 @monitor.py:310][0m value_loss: 1.6605
+[32m[1002 03:19:09 @monitor.py:310][0m xentropy_loss: -154.5
+[32m[1002 03:19:09 @base.py:189][0m Start Epoch 2 ...
+[32m[1002 04:12:46 @base.py:199][0m Epoch 2 (global_step 2400) finished, time:3217.76 sec.
+[32m[1002 04:12:46 @saver.py:85][0m Model saved to train_log/train-unity3d-navigation_v3_rand_move_seg/model-2400.
+[32m[1002 04:12:46 @monitor.py:310][0m SummaryGradient/conv0/W/rms: 0.0014283
+[32m[1002 04:12:46 @monitor.py:310][0m SummaryGradient/conv0/b/rms: 0.0032811
+[32m[1002 04:12:46 @monitor.py:310][0m SummaryGradient/conv1/W/rms: 0.0011004
+[32m[1002 04:12:46 @monitor.py:310][0m SummaryGradient/conv1/b/rms: 0.003706
+[32m[1002 04:12:46 @monitor.py:310][0m SummaryGradient/conv2/W/rms: 0.0005386
+[32m[1002 04:12:46 @monitor.py:310][0m SummaryGradient/conv2/b/rms: 0.0036168
+[32m[1002 04:12:46 @monitor.py:310][0m SummaryGradient/conv3/W/rms: 0.00057622
+[32m[1002 04:12:46 @monitor.py:310][0m SummaryGradient/conv3/b/rms: 0.016277
+[32m[1002 04:12:46 @monitor.py:310][0m SummaryGradient/fc-pi/W/rms: 0.0010609
+[32m[1002 04:12:46 @monitor.py:310][0m SummaryGradient/fc-pi/b/rms: 0.0062164
+[32m[1002 04:12:46 @monitor.py:310][0m SummaryGradient/fc-v/W/rms: 0.011023
+[32m[1002 04:12:46 @monitor.py:310][0m SummaryGradient/fc-v/b/rms: 0.044353
+[32m[1002 04:12:46 @monitor.py:310][0m SummaryGradient/fc0/W/rms: 7.9245e-05
+[32m[1002 04:12:46 @monitor.py:310][0m SummaryGradient/fc0/b/rms: 0.0009631
+[32m[1002 04:12:46 @monitor.py:310][0m SummaryGradient/prelu/alpha/rms: 0.035635
+[32m[1002 04:12:46 @monitor.py:310][0m cost: -0.00071103
+[32m[1002 04:12:46 @monitor.py:310][0m importance: 0.99985
+[32m[1002 04:12:46 @monitor.py:310][0m input_queue_size: 0
+[32m[1002 04:12:46 @monitor.py:310][0m learning_rate: 0.001
+[32m[1002 04:12:46 @monitor.py:310][0m policy_loss: -2.5963
+[32m[1002 04:12:46 @monitor.py:310][0m predict_reward: -0.90654
+[32m[1002 04:12:46 @monitor.py:310][0m rms_advantage: 0.21889
+[32m[1002 04:12:46 @monitor.py:310][0m value_loss: 4.0038
+[32m[1002 04:12:46 @monitor.py:310][0m xentropy_loss: -149.85
+[32m[1002 04:12:46 @base.py:189][0m Start Epoch 3 ...
+[32m[1002 05:04:24 @base.py:199][0m Epoch 3 (global_step 3600) finished, time:3097.81 sec.
+[32m[1002 05:04:24 @saver.py:85][0m Model saved to train_log/train-unity3d-navigation_v3_rand_move_seg/model-3600.
+[32m[1002 05:04:24 @monitor.py:310][0m SummaryGradient/conv0/W/rms: 0.00027555
+[32m[1002 05:04:24 @monitor.py:310][0m SummaryGradient/conv0/b/rms: 0.0010738
+[32m[1002 05:04:24 @monitor.py:310][0m SummaryGradient/conv1/W/rms: 0.00018589
+[32m[1002 05:04:24 @monitor.py:310][0m SummaryGradient/conv1/b/rms: 0.00077953
+[32m[1002 05:04:24 @monitor.py:310][0m SummaryGradient/conv2/W/rms: 0.00027645
+[32m[1002 05:04:24 @monitor.py:310][0m SummaryGradient/conv2/b/rms: 0.00083693
+[32m[1002 05:04:24 @monitor.py:310][0m SummaryGradient/conv3/W/rms: 0.00024232
+[32m[1002 05:04:24 @monitor.py:310][0m SummaryGradient/conv3/b/rms: 0.0049277
+[32m[1002 05:04:24 @monitor.py:310][0m SummaryGradient/fc-pi/W/rms: 0.0004347
+[32m[1002 05:04:24 @monitor.py:310][0m SummaryGradient/fc-pi/b/rms: 0.0022941
+[32m[1002 05:04:24 @monitor.py:310][0m SummaryGradient/fc-v/W/rms: 0.0040061
+[32m[1002 05:04:24 @monitor.py:310][0m SummaryGradient/fc-v/b/rms: 0.019187
+[32m[1002 05:04:24 @monitor.py:310][0m SummaryGradient/fc0/W/rms: 2.6601e-05
+[32m[1002 05:04:24 @monitor.py:310][0m SummaryGradient/fc0/b/rms: 0.00029192
+[32m[1002 05:04:24 @monitor.py:310][0m SummaryGradient/prelu/alpha/rms: 0.030458
+[32m[1002 05:04:24 @monitor.py:310][0m cost: -0.018761
+[32m[1002 05:04:24 @monitor.py:310][0m importance: 1
+[32m[1002 05:04:24 @monitor.py:310][0m input_queue_size: 0
+[32m[1002 05:04:24 @monitor.py:310][0m learning_rate: 0.001
+[32m[1002 05:04:24 @monitor.py:310][0m policy_loss: -2.0056
+[32m[1002 05:04:24 @monitor.py:310][0m predict_reward: -0.90046
+[32m[1002 05:04:24 @monitor.py:310][0m rms_advantage: 0.081869
+[32m[1002 05:04:24 @monitor.py:310][0m value_loss: 1.0445
+[32m[1002 05:04:24 @monitor.py:310][0m xentropy_loss: -144.03
+[32m[1002 05:04:24 @base.py:189][0m Start Epoch 4 ...
+[32m[1002 05:56:29 @base.py:199][0m Epoch 4 (global_step 4800) finished, time:3124.58 sec.
+[32m[1002 05:56:29 @saver.py:85][0m Model saved to train_log/train-unity3d-navigation_v3_rand_move_seg/model-4800.
+[32m[1002 05:56:29 @monitor.py:310][0m SummaryGradient/conv0/W/rms: 0.0010591
+[32m[1002 05:56:29 @monitor.py:310][0m SummaryGradient/conv0/b/rms: 0.0029938
+[32m[1002 05:56:29 @monitor.py:310][0m SummaryGradient/conv1/W/rms: 0.00075609
+[32m[1002 05:56:29 @monitor.py:310][0m SummaryGradient/conv1/b/rms: 0.0019145
+[32m[1002 05:56:29 @monitor.py:310][0m SummaryGradient/conv2/W/rms: 0.00081491
+[32m[1002 05:56:29 @monitor.py:310][0m SummaryGradient/conv2/b/rms: 0.0022418
+[32m[1002 05:56:29 @monitor.py:310][0m SummaryGradient/conv3/W/rms: 0.00069015
+[32m[1002 05:56:29 @monitor.py:310][0m SummaryGradient/conv3/b/rms: 0.0078943
+[32m[1002 05:56:29 @monitor.py:310][0m SummaryGradient/fc-pi/W/rms: 0.00053574
+[32m[1002 05:56:29 @monitor.py:310][0m SummaryGradient/fc-pi/b/rms: 0.0028386
+[32m[1002 05:56:29 @monitor.py:310][0m SummaryGradient/fc-v/W/rms: 0.00915
+[32m[1002 05:56:29 @monitor.py:310][0m SummaryGradient/fc-v/b/rms: 0.028428
+[32m[1002 05:56:29 @monitor.py:310][0m SummaryGradient/fc0/W/rms: 5.9395e-05
+[32m[1002 05:56:29 @monitor.py:310][0m SummaryGradient/fc0/b/rms: 0.0005017
+[32m[1002 05:56:29 @monitor.py:310][0m SummaryGradient/prelu/alpha/rms: 0.02491
+[32m[1002 05:56:29 @monitor.py:310][0m cost: 0.027785
+[32m[1002 05:56:29 @monitor.py:310][0m importance: 0.99972
+[32m[1002 05:56:29 @monitor.py:310][0m input_queue_size: 0
+[32m[1002 05:56:29 @monitor.py:310][0m learning_rate: 0.001
+[32m[1002 05:56:29 @monitor.py:310][0m policy_loss: 0.89608
+[32m[1002 05:56:29 @monitor.py:310][0m predict_reward: -0.96519
+[32m[1002 05:56:29 @monitor.py:310][0m rms_advantage: 0.13911
+[32m[1002 05:56:29 @monitor.py:310][0m value_loss: 4.3346
+[32m[1002 05:56:29 @monitor.py:310][0m xentropy_loss: -167.41
+[32m[1002 05:56:29 @base.py:189][0m Start Epoch 5 ...
+[32m[1002 06:47:30 @base.py:199][0m Epoch 5 (global_step 6000) finished, time:3060.68 sec.
+[32m[1002 06:47:30 @saver.py:85][0m Model saved to train_log/train-unity3d-navigation_v3_rand_move_seg/model-6000.
+[32m[1002 06:47:30 @monitor.py:310][0m SummaryGradient/conv0/W/rms: 0.00052956
+[32m[1002 06:47:30 @monitor.py:310][0m SummaryGradient/conv0/b/rms: 0.0020014
+[32m[1002 06:47:30 @monitor.py:310][0m SummaryGradient/conv1/W/rms: 0.00043732
+[32m[1002 06:47:30 @monitor.py:310][0m SummaryGradient/conv1/b/rms: 0.001146
+[32m[1002 06:47:30 @monitor.py:310][0m SummaryGradient/conv2/W/rms: 0.0004727
+[32m[1002 06:47:30 @monitor.py:310][0m SummaryGradient/conv2/b/rms: 0.0013553
+[32m[1002 06:47:30 @monitor.py:310][0m SummaryGradient/conv3/W/rms: 0.00033697
+[32m[1002 06:47:30 @monitor.py:310][0m SummaryGradient/conv3/b/rms: 0.0049079
+[32m[1002 06:47:30 @monitor.py:310][0m SummaryGradient/fc-pi/W/rms: 0.00060123
+[32m[1002 06:47:30 @monitor.py:310][0m SummaryGradient/fc-pi/b/rms: 0.0026314
+[32m[1002 06:47:30 @monitor.py:310][0m SummaryGradient/fc-v/W/rms: 0.0055981
+[32m[1002 06:47:30 @monitor.py:310][0m SummaryGradient/fc-v/b/rms: 0.021831
+[32m[1002 06:47:30 @monitor.py:310][0m SummaryGradient/fc0/W/rms: 3.0538e-05
+[32m[1002 06:47:30 @monitor.py:310][0m SummaryGradient/fc0/b/rms: 0.00037745
+[32m[1002 06:47:30 @monitor.py:310][0m SummaryGradient/prelu/alpha/rms: 0.019566
+[32m[1002 06:47:30 @monitor.py:310][0m cost: 0.0084102
+[32m[1002 06:47:30 @monitor.py:310][0m importance: 1.0001
+[32m[1002 06:47:30 @monitor.py:310][0m input_queue_size: 0
+[32m[1002 06:47:30 @monitor.py:310][0m learning_rate: 0.001
+[32m[1002 06:47:30 @monitor.py:310][0m policy_loss: 1.1176
+[32m[1002 06:47:30 @monitor.py:310][0m predict_reward: -0.87305
+[32m[1002 06:47:30 @monitor.py:310][0m rms_advantage: 0.10529
+[32m[1002 06:47:30 @monitor.py:310][0m value_loss: 1.6559
+[32m[1002 06:47:30 @monitor.py:310][0m xentropy_loss: -169.69
+[32m[1002 06:47:30 @base.py:189][0m Start Epoch 6 ...
+[32m[1002 07:36:35 @base.py:199][0m Epoch 6 (global_step 7200) finished, time:2945.82 sec.
+[32m[1002 07:36:36 @saver.py:85][0m Model saved to train_log/train-unity3d-navigation_v3_rand_move_seg/model-7200.
+[32m[1002 07:36:36 @monitor.py:310][0m SummaryGradient/conv0/W/rms: 0.00031488
+[32m[1002 07:36:36 @monitor.py:310][0m SummaryGradient/conv0/b/rms: 0.0010013
+[32m[1002 07:36:36 @monitor.py:310][0m SummaryGradient/conv1/W/rms: 0.00026614
+[32m[1002 07:36:36 @monitor.py:310][0m SummaryGradient/conv1/b/rms: 0.00075274
+[32m[1002 07:36:36 @monitor.py:310][0m SummaryGradient/conv2/W/rms: 0.00029422
+[32m[1002 07:36:36 @monitor.py:310][0m SummaryGradient/conv2/b/rms: 0.00093846
+[32m[1002 07:36:36 @monitor.py:310][0m SummaryGradient/conv3/W/rms: 0.00022747
+[32m[1002 07:36:36 @monitor.py:310][0m SummaryGradient/conv3/b/rms: 0.00253
+[32m[1002 07:36:36 @monitor.py:310][0m SummaryGradient/fc-pi/W/rms: 0.00047595
+[32m[1002 07:36:36 @monitor.py:310][0m SummaryGradient/fc-pi/b/rms: 0.0020126
+[32m[1002 07:36:36 @monitor.py:310][0m SummaryGradient/fc-v/W/rms: 0.0037901
+[32m[1002 07:36:36 @monitor.py:310][0m SummaryGradient/fc-v/b/rms: 0.010247
+[32m[1002 07:36:36 @monitor.py:310][0m SummaryGradient/fc0/W/rms: 2.5993e-05
+[32m[1002 07:36:36 @monitor.py:310][0m SummaryGradient/fc0/b/rms: 0.00024317
+[32m[1002 07:36:36 @monitor.py:310][0m SummaryGradient/prelu/alpha/rms: 0.01071
+[32m[1002 07:36:36 @monitor.py:310][0m cost: -0.00501
+[32m[1002 07:36:36 @monitor.py:310][0m importance: 0.99993
+[32m[1002 07:36:36 @monitor.py:310][0m input_queue_size: 0
+[32m[1002 07:36:36 @monitor.py:310][0m learning_rate: 0.001
+[32m[1002 07:36:36 @monitor.py:310][0m policy_loss: -0.28214
+[32m[1002 07:36:36 @monitor.py:310][0m predict_reward: -0.84842
+[32m[1002 07:36:36 @monitor.py:310][0m rms_advantage: 0.081512
+[32m[1002 07:36:36 @monitor.py:310][0m value_loss: 1.1633
+[32m[1002 07:36:36 @monitor.py:310][0m xentropy_loss: -152.25
+[32m[1002 07:36:36 @base.py:189][0m Start Epoch 7 ...
+[32m[1002 08:24:54 @base.py:199][0m Epoch 7 (global_step 8400) finished, time:2898.47 sec.
+[32m[1002 08:24:54 @saver.py:85][0m Model saved to train_log/train-unity3d-navigation_v3_rand_move_seg/model-8400.
+[32m[1002 08:24:54 @monitor.py:310][0m SummaryGradient/conv0/W/rms: 0.00071697
+[32m[1002 08:24:54 @monitor.py:310][0m SummaryGradient/conv0/b/rms: 0.0023973
+[32m[1002 08:24:54 @monitor.py:310][0m SummaryGradient/conv1/W/rms: 0.00054348
+[32m[1002 08:24:54 @monitor.py:310][0m SummaryGradient/conv1/b/rms: 0.0014073
+[32m[1002 08:24:54 @monitor.py:310][0m SummaryGradient/conv2/W/rms: 0.00059922
+[32m[1002 08:24:54 @monitor.py:310][0m SummaryGradient/conv2/b/rms: 0.0016385
+[32m[1002 08:24:54 @monitor.py:310][0m SummaryGradient/conv3/W/rms: 0.00049365
+[32m[1002 08:24:54 @monitor.py:310][0m SummaryGradient/conv3/b/rms: 0.0037922
+[32m[1002 08:24:54 @monitor.py:310][0m SummaryGradient/fc-pi/W/rms: 0.00091074
+[32m[1002 08:24:54 @monitor.py:310][0m SummaryGradient/fc-pi/b/rms: 0.0046913
+[32m[1002 08:24:54 @monitor.py:310][0m SummaryGradient/fc-v/W/rms: 0.0052476
+[32m[1002 08:24:54 @monitor.py:310][0m SummaryGradient/fc-v/b/rms: 0.020828
+[32m[1002 08:24:54 @monitor.py:310][0m SummaryGradient/fc0/W/rms: 5.3047e-05
+[32m[1002 08:24:54 @monitor.py:310][0m SummaryGradient/fc0/b/rms: 0.00054081
+[32m[1002 08:24:54 @monitor.py:310][0m SummaryGradient/prelu/alpha/rms: 0.01938
+[32m[1002 08:24:54 @monitor.py:310][0m cost: 0.010173
+[32m[1002 08:24:54 @monitor.py:310][0m importance: 0.99992
+[32m[1002 08:24:54 @monitor.py:310][0m input_queue_size: 0
+[32m[1002 08:24:54 @monitor.py:310][0m learning_rate: 0.001
+[32m[1002 08:24:54 @monitor.py:310][0m policy_loss: 0.1754
+[32m[1002 08:24:54 @monitor.py:310][0m predict_reward: -0.32446
+[32m[1002 08:24:54 @monitor.py:310][0m rms_advantage: 0.16199
+[32m[1002 08:24:54 @monitor.py:310][0m value_loss: 2.883
+[32m[1002 08:24:54 @monitor.py:310][0m xentropy_loss: -175.62
+[32m[1002 08:24:54 @base.py:189][0m Start Epoch 8 ...
+[32m[1002 09:11:34 @base.py:199][0m Epoch 8 (global_step 9600) finished, time:2800.15 sec.
+[32m[1002 09:11:34 @saver.py:85][0m Model saved to train_log/train-unity3d-navigation_v3_rand_move_seg/model-9600.
+[32m[1002 09:11:34 @monitor.py:310][0m SummaryGradient/conv0/W/rms: 0.00057524
+[32m[1002 09:11:34 @monitor.py:310][0m SummaryGradient/conv0/b/rms: 0.0020521
+[32m[1002 09:11:34 @monitor.py:310][0m SummaryGradient/conv1/W/rms: 0.00040881
+[32m[1002 09:11:34 @monitor.py:310][0m SummaryGradient/conv1/b/rms: 0.001558
+[32m[1002 09:11:34 @monitor.py:310][0m SummaryGradient/conv2/W/rms: 0.00044505
+[32m[1002 09:11:34 @monitor.py:310][0m SummaryGradient/conv2/b/rms: 0.0016989
+[32m[1002 09:11:34 @monitor.py:310][0m SummaryGradient/conv3/W/rms: 0.00046089
+[32m[1002 09:11:34 @monitor.py:310][0m SummaryGradient/conv3/b/rms: 0.0031474
+[32m[1002 09:11:34 @monitor.py:310][0m SummaryGradient/fc-pi/W/rms: 0.00079476
+[32m[1002 09:11:34 @monitor.py:310][0m SummaryGradient/fc-pi/b/rms: 0.004055
+[32m[1002 09:11:34 @monitor.py:310][0m SummaryGradient/fc-v/W/rms: 0.0041523
+[32m[1002 09:11:34 @monitor.py:310][0m SummaryGradient/fc-v/b/rms: 0.018545
+[32m[1002 09:11:34 @monitor.py:310][0m SummaryGradient/fc0/W/rms: 4.3009e-05
+[32m[1002 09:11:34 @monitor.py:310][0m SummaryGradient/fc0/b/rms: 0.0004014
+[32m[1002 09:11:34 @monitor.py:310][0m SummaryGradient/prelu/alpha/rms: 0.027331
+[32m[1002 09:11:34 @monitor.py:310][0m cost: 0.00089823
+[32m[1002 09:11:34 @monitor.py:310][0m importance: 1.0001
+[32m[1002 09:11:34 @monitor.py:310][0m input_queue_size: 0
+[32m[1002 09:11:34 @monitor.py:310][0m learning_rate: 0.001
+[32m[1002 09:11:34 @monitor.py:310][0m policy_loss: 0.31919
+[32m[1002 09:11:34 @monitor.py:310][0m predict_reward: -0.096792
+[32m[1002 09:11:34 @monitor.py:310][0m rms_advantage: 0.12453
+[32m[1002 09:11:34 @monitor.py:310][0m value_loss: 1.5332
+[32m[1002 09:11:34 @monitor.py:310][0m xentropy_loss: -173.74
+[32m[1002 09:11:34 @base.py:189][0m Start Epoch 9 ...
+[32m[1002 09:58:44 @base.py:199][0m Epoch 9 (global_step 10800) finished, time:2829.49 sec.
+[32m[1002 09:58:44 @saver.py:85][0m Model saved to train_log/train-unity3d-navigation_v3_rand_move_seg/model-10800.
+[32m[1002 09:58:44 @monitor.py:310][0m SummaryGradient/conv0/W/rms: 0.00082455
+[32m[1002 09:58:44 @monitor.py:310][0m SummaryGradient/conv0/b/rms: 0.0032751
+[32m[1002 09:58:44 @monitor.py:310][0m SummaryGradient/conv1/W/rms: 0.0005306
+[32m[1002 09:58:44 @monitor.py:310][0m SummaryGradient/conv1/b/rms: 0.001864
+[32m[1002 09:58:44 @monitor.py:310][0m SummaryGradient/conv2/W/rms: 0.00063827
+[32m[1002 09:58:44 @monitor.py:310][0m SummaryGradient/conv2/b/rms: 0.0025524
+[32m[1002 09:58:44 @monitor.py:310][0m SummaryGradient/conv3/W/rms: 0.00054412
+[32m[1002 09:58:44 @monitor.py:310][0m SummaryGradient/conv3/b/rms: 0.0041718
+[32m[1002 09:58:44 @monitor.py:310][0m SummaryGradient/fc-pi/W/rms: 0.0010444
+[32m[1002 09:58:44 @monitor.py:310][0m SummaryGradient/fc-pi/b/rms: 0.0048331
+[32m[1002 09:58:44 @monitor.py:310][0m SummaryGradient/fc-v/W/rms: 0.0065726
+[32m[1002 09:58:44 @monitor.py:310][0m SummaryGradient/fc-v/b/rms: 0.025845
+[32m[1002 09:58:44 @monitor.py:310][0m SummaryGradient/fc0/W/rms: 5.1395e-05
+[32m[1002 09:58:44 @monitor.py:310][0m SummaryGradient/fc0/b/rms: 0.00055691
+[32m[1002 09:58:44 @monitor.py:310][0m SummaryGradient/prelu/alpha/rms: 0.033092
+[32m[1002 09:58:44 @monitor.py:310][0m cost: -0.0020778
+[32m[1002 09:58:44 @monitor.py:310][0m importance: 1
+[32m[1002 09:58:44 @monitor.py:310][0m input_queue_size: 0
+[32m[1002 09:58:44 @monitor.py:310][0m learning_rate: 0.001
+[32m[1002 09:58:44 @monitor.py:310][0m policy_loss: -0.66186
+[32m[1002 09:58:44 @monitor.py:310][0m predict_reward: -0.31439
+[32m[1002 09:58:44 @monitor.py:310][0m rms_advantage: 0.15299
+[32m[1002 09:58:44 @monitor.py:310][0m value_loss: 2.1487
+[32m[1002 09:58:44 @monitor.py:310][0m xentropy_loss: -175.27
+[32m[1002 09:58:44 @base.py:189][0m Start Epoch 10 ...
+[32m[1002 10:46:46 @base.py:199][0m Epoch 10 (global_step 12000) finished, time:2882.23 sec.
+[32m[1002 10:46:46 @saver.py:85][0m Model saved to train_log/train-unity3d-navigation_v3_rand_move_seg/model-12000.
+[32m[1002 10:46:46 @monitor.py:310][0m SummaryGradient/conv0/W/rms: 0.00039083
+[32m[1002 10:46:46 @monitor.py:310][0m SummaryGradient/conv0/b/rms: 0.0015717
+[32m[1002 10:46:46 @monitor.py:310][0m SummaryGradient/conv1/W/rms: 0.00030879
+[32m[1002 10:46:46 @monitor.py:310][0m SummaryGradient/conv1/b/rms: 0.0012445
+[32m[1002 10:46:46 @monitor.py:310][0m SummaryGradient/conv2/W/rms: 0.00028921
+[32m[1002 10:46:46 @monitor.py:310][0m SummaryGradient/conv2/b/rms: 0.0013807
+[32m[1002 10:46:46 @monitor.py:310][0m SummaryGradient/conv3/W/rms: 0.00026122
+[32m[1002 10:46:46 @monitor.py:310][0m SummaryGradient/conv3/b/rms: 0.0032237
+[32m[1002 10:46:46 @monitor.py:310][0m SummaryGradient/fc-pi/W/rms: 0.00078336
+[32m[1002 10:46:46 @monitor.py:310][0m SummaryGradient/fc-pi/b/rms: 0.0031143
+[32m[1002 10:46:46 @monitor.py:310][0m SummaryGradient/fc-v/W/rms: 0.0047845
+[32m[1002 10:46:46 @monitor.py:310][0m SummaryGradient/fc-v/b/rms: 0.014399
+[32m[1002 10:46:46 @monitor.py:310][0m SummaryGradient/fc0/W/rms: 3.1663e-05
+[32m[1002 10:46:46 @monitor.py:310][0m SummaryGradient/fc0/b/rms: 0.00032362
+[32m[1002 10:46:46 @monitor.py:310][0m SummaryGradient/prelu/alpha/rms: 0.015147
+[32m[1002 10:46:46 @monitor.py:310][0m cost: -0.0086897
+[32m[1002 10:46:46 @monitor.py:310][0m importance: 0.99983
+[32m[1002 10:46:46 @monitor.py:310][0m input_queue_size: 0
+[32m[1002 10:46:46 @monitor.py:310][0m learning_rate: 0.001
+[32m[1002 10:46:46 @monitor.py:310][0m policy_loss: -0.32662
+[32m[1002 10:46:46 @monitor.py:310][0m predict_reward: -0.71002
+[32m[1002 10:46:46 @monitor.py:310][0m rms_advantage: 0.099727
+[32m[1002 10:46:46 @monitor.py:310][0m value_loss: 0.91097
+[32m[1002 10:46:46 @monitor.py:310][0m xentropy_loss: -169.66
+[32m[1002 10:46:46 @base.py:189][0m Start Epoch 11 ...
+[32m[1002 11:33:26 @base.py:199][0m Epoch 11 (global_step 13200) finished, time:2800.08 sec.
+[32m[1002 11:33:26 @saver.py:85][0m Model saved to train_log/train-unity3d-navigation_v3_rand_move_seg/model-13200.
+[32m[1002 11:33:26 @monitor.py:310][0m SummaryGradient/conv0/W/rms: 0.00052526
+[32m[1002 11:33:26 @monitor.py:310][0m SummaryGradient/conv0/b/rms: 0.0021127
+[32m[1002 11:33:26 @monitor.py:310][0m SummaryGradient/conv1/W/rms: 0.00036289
+[32m[1002 11:33:26 @monitor.py:310][0m SummaryGradient/conv1/b/rms: 0.0012873
+[32m[1002 11:33:26 @monitor.py:310][0m SummaryGradient/conv2/W/rms: 0.00033519
+[32m[1002 11:33:26 @monitor.py:310][0m SummaryGradient/conv2/b/rms: 0.0012798
+[32m[1002 11:33:26 @monitor.py:310][0m SummaryGradient/conv3/W/rms: 0.00037277
+[32m[1002 11:33:26 @monitor.py:310][0m SummaryGradient/conv3/b/rms: 0.0028762
+[32m[1002 11:33:26 @monitor.py:310][0m SummaryGradient/fc-pi/W/rms: 0.00078577
+[32m[1002 11:33:26 @monitor.py:310][0m SummaryGradient/fc-pi/b/rms: 0.0035025
+[32m[1002 11:33:26 @monitor.py:310][0m SummaryGradient/fc-v/W/rms: 0.0045611
+[32m[1002 11:33:26 @monitor.py:310][0m SummaryGradient/fc-v/b/rms: 0.019119
+[32m[1002 11:33:26 @monitor.py:310][0m SummaryGradient/fc0/W/rms: 4.1517e-05
+[32m[1002 11:33:26 @monitor.py:310][0m SummaryGradient/fc0/b/rms: 0.0003893
+[32m[1002 11:33:26 @monitor.py:310][0m SummaryGradient/prelu/alpha/rms: 0.023742
+[32m[1002 11:33:26 @monitor.py:310][0m cost: -0.0051453
+[32m[1002 11:33:26 @monitor.py:310][0m importance: 1
+[32m[1002 11:33:26 @monitor.py:310][0m input_queue_size: 0
+[32m[1002 11:33:26 @monitor.py:310][0m learning_rate: 0.001
+[32m[1002 11:33:26 @monitor.py:310][0m policy_loss: -0.6905
+[32m[1002 11:33:26 @monitor.py:310][0m predict_reward: -0.061263
+[32m[1002 11:33:26 @monitor.py:310][0m rms_advantage: 0.12707
+[32m[1002 11:33:26 @monitor.py:310][0m value_loss: 1.6943
+[32m[1002 11:33:26 @monitor.py:310][0m xentropy_loss: -166.24
+[32m[1002 11:33:26 @base.py:189][0m Start Epoch 12 ...
+[32m[1002 12:19:59 @base.py:199][0m Epoch 12 (global_step 14400) finished, time:2792.42 sec.
+[32m[1002 12:19:59 @saver.py:85][0m Model saved to train_log/train-unity3d-navigation_v3_rand_move_seg/model-14400.
+[32m[1002 12:19:59 @monitor.py:310][0m SummaryGradient/conv0/W/rms: 0.00073472
+[32m[1002 12:19:59 @monitor.py:310][0m SummaryGradient/conv0/b/rms: 0.0032233
+[32m[1002 12:19:59 @monitor.py:310][0m SummaryGradient/conv1/W/rms: 0.00052449
+[32m[1002 12:19:59 @monitor.py:310][0m SummaryGradient/conv1/b/rms: 0.0019755
+[32m[1002 12:19:59 @monitor.py:310][0m SummaryGradient/conv2/W/rms: 0.00055431
+[32m[1002 12:19:59 @monitor.py:310][0m SummaryGradient/conv2/b/rms: 0.0018915
+[32m[1002 12:19:59 @monitor.py:310][0m SummaryGradient/conv3/W/rms: 0.00050105
+[32m[1002 12:19:59 @monitor.py:310][0m SummaryGradient/conv3/b/rms: 0.004172
+[32m[1002 12:19:59 @monitor.py:310][0m SummaryGradient/fc-pi/W/rms: 0.0011444
+[32m[1002 12:19:59 @monitor.py:310][0m SummaryGradient/fc-pi/b/rms: 0.0038358
+[32m[1002 12:19:59 @monitor.py:310][0m SummaryGradient/fc-v/W/rms: 0.0074256
+[32m[1002 12:19:59 @monitor.py:310][0m SummaryGradient/fc-v/b/rms: 0.021366
+[32m[1002 12:19:59 @monitor.py:310][0m SummaryGradient/fc0/W/rms: 5.5734e-05
+[32m[1002 12:19:59 @monitor.py:310][0m SummaryGradient/fc0/b/rms: 0.00048163
+[32m[1002 12:19:59 @monitor.py:310][0m SummaryGradient/prelu/alpha/rms: 0.026498
+[32m[1002 12:19:59 @monitor.py:310][0m cost: 0.0058661
+[32m[1002 12:19:59 @monitor.py:310][0m importance: 0.9999
+[32m[1002 12:19:59 @monitor.py:310][0m input_queue_size: 0
+[32m[1002 12:19:59 @monitor.py:310][0m learning_rate: 0.001
+[32m[1002 12:19:59 @monitor.py:310][0m policy_loss: 0.23473
+[32m[1002 12:19:59 @monitor.py:310][0m predict_reward: -0.42248
+[32m[1002 12:19:59 @monitor.py:310][0m rms_advantage: 0.15445
+[32m[1002 12:19:59 @monitor.py:310][0m value_loss: 2.168
+[32m[1002 12:19:59 @monitor.py:310][0m xentropy_loss: -165.19
+[32m[1002 12:19:59 @base.py:189][0m Start Epoch 13 ...
+[32m[1002 13:07:13 @base.py:199][0m Epoch 13 (global_step 15600) finished, time:2834.24 sec.
+[32m[1002 13:07:13 @saver.py:85][0m Model saved to train_log/train-unity3d-navigation_v3_rand_move_seg/model-15600.
+[32m[1002 13:07:13 @monitor.py:310][0m SummaryGradient/conv0/W/rms: 0.0011196
+[32m[1002 13:07:13 @monitor.py:310][0m SummaryGradient/conv0/b/rms: 0.004726
+[32m[1002 13:07:13 @monitor.py:310][0m SummaryGradient/conv1/W/rms: 0.00096983
+[32m[1002 13:07:13 @monitor.py:310][0m SummaryGradient/conv1/b/rms: 0.0025463
+[32m[1002 13:07:13 @monitor.py:310][0m SummaryGradient/conv2/W/rms: 0.00091376
+[32m[1002 13:07:13 @monitor.py:310][0m SummaryGradient/conv2/b/rms: 0.0022053
+[32m[1002 13:07:13 @monitor.py:310][0m SummaryGradient/conv3/W/rms: 0.00085985
+[32m[1002 13:07:13 @monitor.py:310][0m SummaryGradient/conv3/b/rms: 0.004901
+[32m[1002 13:07:13 @monitor.py:310][0m SummaryGradient/fc-pi/W/rms: 0.0017538
+[32m[1002 13:07:13 @monitor.py:310][0m SummaryGradient/fc-pi/b/rms: 0.0053766
+[32m[1002 13:07:13 @monitor.py:310][0m SummaryGradient/fc-v/W/rms: 0.012815
+[32m[1002 13:07:13 @monitor.py:310][0m SummaryGradient/fc-v/b/rms: 0.026483
+[32m[1002 13:07:13 @monitor.py:310][0m SummaryGradient/fc0/W/rms: 0.0001118
+[32m[1002 13:07:13 @monitor.py:310][0m SummaryGradient/fc0/b/rms: 0.00061228
+[32m[1002 13:07:13 @monitor.py:310][0m SummaryGradient/prelu/alpha/rms: 0.057967
+[32m[1002 13:07:13 @monitor.py:310][0m cost: 0.013346
+[32m[1002 13:07:13 @monitor.py:310][0m importance: 0.99977
+[32m[1002 13:07:13 @monitor.py:310][0m input_queue_size: 0
+[32m[1002 13:07:13 @monitor.py:310][0m learning_rate: 0.001
+[32m[1002 13:07:13 @monitor.py:310][0m policy_loss: -1.1192
+[32m[1002 13:07:13 @monitor.py:310][0m predict_reward: -0.11718
+[32m[1002 13:07:13 @monitor.py:310][0m rms_advantage: 0.19497
+[32m[1002 13:07:13 @monitor.py:310][0m value_loss: 4.4695
+[32m[1002 13:07:13 @monitor.py:310][0m xentropy_loss: -164.2
+[32m[1002 13:07:13 @base.py:189][0m Start Epoch 14 ...
+[32m[1002 13:54:17 @base.py:199][0m Epoch 14 (global_step 16800) finished, time:2823.93 sec.
+[32m[1002 13:54:17 @saver.py:85][0m Model saved to train_log/train-unity3d-navigation_v3_rand_move_seg/model-16800.
+[32m[1002 13:54:17 @monitor.py:310][0m SummaryGradient/conv0/W/rms: 0.00085937
+[32m[1002 13:54:17 @monitor.py:310][0m SummaryGradient/conv0/b/rms: 0.0050415
+[32m[1002 13:54:17 @monitor.py:310][0m SummaryGradient/conv1/W/rms: 0.00071379
+[32m[1002 13:54:17 @monitor.py:310][0m SummaryGradient/conv1/b/rms: 0.003113
+[32m[1002 13:54:17 @monitor.py:310][0m SummaryGradient/conv2/W/rms: 0.00069572
+[32m[1002 13:54:17 @monitor.py:310][0m SummaryGradient/conv2/b/rms: 0.0017513
+[32m[1002 13:54:17 @monitor.py:310][0m SummaryGradient/conv3/W/rms: 0.00049978
+[32m[1002 13:54:17 @monitor.py:310][0m SummaryGradient/conv3/b/rms: 0.0038651
+[32m[1002 13:54:17 @monitor.py:310][0m SummaryGradient/fc-pi/W/rms: 0.001154
+[32m[1002 13:54:17 @monitor.py:310][0m SummaryGradient/fc-pi/b/rms: 0.0048161
+[32m[1002 13:54:17 @monitor.py:310][0m SummaryGradient/fc-v/W/rms: 0.008829
+[32m[1002 13:54:17 @monitor.py:310][0m SummaryGradient/fc-v/b/rms: 0.025654
+[32m[1002 13:54:17 @monitor.py:310][0m SummaryGradient/fc0/W/rms: 5.9337e-05
+[32m[1002 13:54:17 @monitor.py:310][0m SummaryGradient/fc0/b/rms: 0.00049287
+[32m[1002 13:54:17 @monitor.py:310][0m SummaryGradient/prelu/alpha/rms: 0.030729
+[32m[1002 13:54:17 @monitor.py:310][0m cost: 0.0036622
+[32m[1002 13:54:17 @monitor.py:310][0m importance: 1.0001
+[32m[1002 13:54:17 @monitor.py:310][0m input_queue_size: 0
+[32m[1002 13:54:17 @monitor.py:310][0m learning_rate: 0.001
+[32m[1002 13:54:17 @monitor.py:310][0m policy_loss: -1.221
+[32m[1002 13:54:17 @monitor.py:310][0m predict_reward: -0.13297
+[32m[1002 13:54:17 @monitor.py:310][0m rms_advantage: 0.1708
+[32m[1002 13:54:17 @monitor.py:310][0m value_loss: 3.4402
+[32m[1002 13:54:17 @monitor.py:310][0m xentropy_loss: -175.04
+[32m[1002 13:54:17 @base.py:189][0m Start Epoch 15 ...
+[32m[1002 14:41:58 @base.py:199][0m Epoch 15 (global_step 18000) finished, time:2860.71 sec.
+[32m[1002 14:41:58 @saver.py:85][0m Model saved to train_log/train-unity3d-navigation_v3_rand_move_seg/model-18000.
+[32m[1002 14:41:58 @monitor.py:310][0m SummaryGradient/conv0/W/rms: 0.00070867
+[32m[1002 14:41:58 @monitor.py:310][0m SummaryGradient/conv0/b/rms: 0.0030371
+[32m[1002 14:41:58 @monitor.py:310][0m SummaryGradient/conv1/W/rms: 0.00056526
+[32m[1002 14:41:58 @monitor.py:310][0m SummaryGradient/conv1/b/rms: 0.0026132
+[32m[1002 14:41:58 @monitor.py:310][0m SummaryGradient/conv2/W/rms: 0.00056212
+[32m[1002 14:41:58 @monitor.py:310][0m SummaryGradient/conv2/b/rms: 0.0019497
+[32m[1002 14:41:58 @monitor.py:310][0m SummaryGradient/conv3/W/rms: 0.00056633
+[32m[1002 14:41:58 @monitor.py:310][0m SummaryGradient/conv3/b/rms: 0.0045234
+[32m[1002 14:41:58 @monitor.py:310][0m SummaryGradient/fc-pi/W/rms: 0.0015393
+[32m[1002 14:41:58 @monitor.py:310][0m SummaryGradient/fc-pi/b/rms: 0.0051048
+[32m[1002 14:41:58 @monitor.py:310][0m SummaryGradient/fc-v/W/rms: 0.0084653
+[32m[1002 14:41:58 @monitor.py:310][0m SummaryGradient/fc-v/b/rms: 0.025141
+[32m[1002 14:41:58 @monitor.py:310][0m SummaryGradient/fc0/W/rms: 7.4227e-05
+[32m[1002 14:41:58 @monitor.py:310][0m SummaryGradient/fc0/b/rms: 0.00054744
+[32m[1002 14:41:58 @monitor.py:310][0m SummaryGradient/prelu/alpha/rms: 0.03692
+[32m[1002 14:41:58 @monitor.py:310][0m cost: 0.0034056
+[32m[1002 14:41:58 @monitor.py:310][0m importance: 0.99992
+[32m[1002 14:41:58 @monitor.py:310][0m input_queue_size: 0
+[32m[1002 14:41:58 @monitor.py:310][0m learning_rate: 0.001
+[32m[1002 14:41:58 @monitor.py:310][0m policy_loss: -0.28141
+[32m[1002 14:41:58 @monitor.py:310][0m predict_reward: -0.025345
+[32m[1002 14:41:58 @monitor.py:310][0m rms_advantage: 0.16468
+[32m[1002 14:41:58 @monitor.py:310][0m value_loss: 2.4296
+[32m[1002 14:41:58 @monitor.py:310][0m xentropy_loss: -171.22
+[32m[1002 14:41:58 @base.py:189][0m Start Epoch 16 ...
+[32m[1002 15:30:50 @base.py:199][0m Epoch 16 (global_step 19200) finished, time:2932.71 sec.
+[32m[1002 15:30:50 @saver.py:85][0m Model saved to train_log/train-unity3d-navigation_v3_rand_move_seg/model-19200.
+[32m[1002 15:30:50 @monitor.py:310][0m SummaryGradient/conv0/W/rms: 0.00060112
+[32m[1002 15:30:50 @monitor.py:310][0m SummaryGradient/conv0/b/rms: 0.0025701
+[32m[1002 15:30:50 @monitor.py:310][0m SummaryGradient/conv1/W/rms: 0.00044707
+[32m[1002 15:30:50 @monitor.py:310][0m SummaryGradient/conv1/b/rms: 0.0022019
+[32m[1002 15:30:50 @monitor.py:310][0m SummaryGradient/conv2/W/rms: 0.00048855
+[32m[1002 15:30:50 @monitor.py:310][0m SummaryGradient/conv2/b/rms: 0.0020281
+[32m[1002 15:30:50 @monitor.py:310][0m SummaryGradient/conv3/W/rms: 0.00043855
+[32m[1002 15:30:50 @monitor.py:310][0m SummaryGradient/conv3/b/rms: 0.0030506
+[32m[1002 15:30:50 @monitor.py:310][0m SummaryGradient/fc-pi/W/rms: 0.0014535
+[32m[1002 15:30:50 @monitor.py:310][0m SummaryGradient/fc-pi/b/rms: 0.0045061
+[32m[1002 15:30:50 @monitor.py:310][0m SummaryGradient/fc-v/W/rms: 0.007454
+[32m[1002 15:30:50 @monitor.py:310][0m SummaryGradient/fc-v/b/rms: 0.019974
+[32m[1002 15:30:50 @monitor.py:310][0m SummaryGradient/fc0/W/rms: 6.1556e-05
+[32m[1002 15:30:50 @monitor.py:310][0m SummaryGradient/fc0/b/rms: 0.00044494
+[32m[1002 15:30:50 @monitor.py:310][0m SummaryGradient/prelu/alpha/rms: 0.032994
+[32m[1002 15:30:50 @monitor.py:310][0m cost: 0.0032682
+[32m[1002 15:30:50 @monitor.py:310][0m importance: 1
+[32m[1002 15:30:50 @monitor.py:310][0m input_queue_size: 0
+[32m[1002 15:30:50 @monitor.py:310][0m learning_rate: 0.001
+[32m[1002 15:30:50 @monitor.py:310][0m policy_loss: -0.80213
+[32m[1002 15:30:50 @monitor.py:310][0m predict_reward: -0.045478
+[32m[1002 15:30:50 @monitor.py:310][0m rms_advantage: 0.16239
+[32m[1002 15:30:50 @monitor.py:310][0m value_loss: 2.8886
+[32m[1002 15:30:50 @monitor.py:310][0m xentropy_loss: -166.81
+[32m[1002 15:30:50 @base.py:189][0m Start Epoch 17 ...
+[32m[1002 16:20:10 @base.py:199][0m Epoch 17 (global_step 20400) finished, time:2959.84 sec.
+[32m[1002 16:20:10 @saver.py:85][0m Model saved to train_log/train-unity3d-navigation_v3_rand_move_seg/model-20400.
+[32m[1002 16:20:10 @monitor.py:310][0m SummaryGradient/conv0/W/rms: 0.00016979
+[32m[1002 16:20:10 @monitor.py:310][0m SummaryGradient/conv0/b/rms: 0.00085777
+[32m[1002 16:20:10 @monitor.py:310][0m SummaryGradient/conv1/W/rms: 0.00012131
+[32m[1002 16:20:10 @monitor.py:310][0m SummaryGradient/conv1/b/rms: 0.00076726
+[32m[1002 16:20:10 @monitor.py:310][0m SummaryGradient/conv2/W/rms: 0.00012679
+[32m[1002 16:20:10 @monitor.py:310][0m SummaryGradient/conv2/b/rms: 0.00075126
+[32m[1002 16:20:10 @monitor.py:310][0m SummaryGradient/conv3/W/rms: 0.00013687
+[32m[1002 16:20:10 @monitor.py:310][0m SummaryGradient/conv3/b/rms: 0.0011559
+[32m[1002 16:20:10 @monitor.py:310][0m SummaryGradient/fc-pi/W/rms: 0.00035488
+[32m[1002 16:20:10 @monitor.py:310][0m SummaryGradient/fc-pi/b/rms: 0.0020406
+[32m[1002 16:20:10 @monitor.py:310][0m SummaryGradient/fc-v/W/rms: 0.0017671
+[32m[1002 16:20:10 @monitor.py:310][0m SummaryGradient/fc-v/b/rms: 0.0088901
+[32m[1002 16:20:10 @monitor.py:310][0m SummaryGradient/fc0/W/rms: 1.8532e-05
+[32m[1002 16:20:10 @monitor.py:310][0m SummaryGradient/fc0/b/rms: 0.00016657
+[32m[1002 16:20:10 @monitor.py:310][0m SummaryGradient/prelu/alpha/rms: 0.015663
+[32m[1002 16:20:10 @monitor.py:310][0m cost: -0.015341
+[32m[1002 16:20:10 @monitor.py:310][0m importance: 0.99995
+[32m[1002 16:20:10 @monitor.py:310][0m input_queue_size: 0
+[32m[1002 16:20:10 @monitor.py:310][0m learning_rate: 0.001
+[32m[1002 16:20:10 @monitor.py:310][0m policy_loss: -0.59665
+[32m[1002 16:20:10 @monitor.py:310][0m predict_reward: 0.27086
+[32m[1002 16:20:10 @monitor.py:310][0m rms_advantage: 0.067286
+[32m[1002 16:20:10 @monitor.py:310][0m value_loss: 0.39513
+[32m[1002 16:20:10 @monitor.py:310][0m xentropy_loss: -176.22
+[32m[1002 16:20:10 @base.py:189][0m Start Epoch 18 ...
+[32m[1002 17:09:17 @base.py:199][0m Epoch 18 (global_step 21600) finished, time:2946.27 sec.
+[32m[1002 17:09:17 @saver.py:85][0m Model saved to train_log/train-unity3d-navigation_v3_rand_move_seg/model-21600.
+[32m[1002 17:09:17 @monitor.py:310][0m SummaryGradient/conv0/W/rms: 0.00030469
+[32m[1002 17:09:17 @monitor.py:310][0m SummaryGradient/conv0/b/rms: 0.0012386
+[32m[1002 17:09:17 @monitor.py:310][0m SummaryGradient/conv1/W/rms: 0.00021723
+[32m[1002 17:09:17 @monitor.py:310][0m SummaryGradient/conv1/b/rms: 0.001133
+[32m[1002 17:09:17 @monitor.py:310][0m SummaryGradient/conv2/W/rms: 0.00021445
+[32m[1002 17:09:17 @monitor.py:310][0m SummaryGradient/conv2/b/rms: 0.001079
+[32m[1002 17:09:17 @monitor.py:310][0m SummaryGradient/conv3/W/rms: 0.00020496
+[32m[1002 17:09:17 @monitor.py:310][0m SummaryGradient/conv3/b/rms: 0.0018837
+[32m[1002 17:09:17 @monitor.py:310][0m SummaryGradient/fc-pi/W/rms: 0.00066295
+[32m[1002 17:09:17 @monitor.py:310][0m SummaryGradient/fc-pi/b/rms: 0.0025912
+[32m[1002 17:09:17 @monitor.py:310][0m SummaryGradient/fc-v/W/rms: 0.0035077
+[32m[1002 17:09:17 @monitor.py:310][0m SummaryGradient/fc-v/b/rms: 0.014553
+[32m[1002 17:09:17 @monitor.py:310][0m SummaryGradient/fc0/W/rms: 2.6002e-05
+[32m[1002 17:09:17 @monitor.py:310][0m SummaryGradient/fc0/b/rms: 0.00022418
+[32m[1002 17:09:17 @monitor.py:310][0m SummaryGradient/prelu/alpha/rms: 0.02833
+[32m[1002 17:09:17 @monitor.py:310][0m cost: -0.0051911
+[32m[1002 17:09:17 @monitor.py:310][0m importance: 1
+[32m[1002 17:09:17 @monitor.py:310][0m input_queue_size: 0
+[32m[1002 17:09:17 @monitor.py:310][0m learning_rate: 0.001
+[32m[1002 17:09:17 @monitor.py:310][0m policy_loss: 0.27933
+[32m[1002 17:09:17 @monitor.py:310][0m predict_reward: 0.21667
+[32m[1002 17:09:17 @monitor.py:310][0m rms_advantage: 0.087852
+[32m[1002 17:09:17 @monitor.py:310][0m value_loss: 0.8092
+[32m[1002 17:09:17 @monitor.py:310][0m xentropy_loss: -175.3
+[32m[1002 17:09:17 @base.py:189][0m Start Epoch 19 ...
+[32m[1002 17:58:06 @base.py:199][0m Epoch 19 (global_step 22800) finished, time:2929.30 sec.
+[32m[1002 17:58:06 @saver.py:85][0m Model saved to train_log/train-unity3d-navigation_v3_rand_move_seg/model-22800.
+[32m[1002 17:58:06 @monitor.py:310][0m SummaryGradient/conv0/W/rms: 0.00079015
+[32m[1002 17:58:06 @monitor.py:310][0m SummaryGradient/conv0/b/rms: 0.0030045
+[32m[1002 17:58:06 @monitor.py:310][0m SummaryGradient/conv1/W/rms: 0.00039038
+[32m[1002 17:58:06 @monitor.py:310][0m SummaryGradient/conv1/b/rms: 0.0023077
+[32m[1002 17:58:06 @monitor.py:310][0m SummaryGradient/conv2/W/rms: 0.00038061
+[32m[1002 17:58:06 @monitor.py:310][0m SummaryGradient/conv2/b/rms: 0.002904
+[32m[1002 17:58:06 @monitor.py:310][0m SummaryGradient/conv3/W/rms: 0.00034211
+[32m[1002 17:58:06 @monitor.py:310][0m SummaryGradient/conv3/b/rms: 0.0052257
+[32m[1002 17:58:06 @monitor.py:310][0m SummaryGradient/fc-pi/W/rms: 0.0011648
+[32m[1002 17:58:06 @monitor.py:310][0m SummaryGradient/fc-pi/b/rms: 0.0041777
+[32m[1002 17:58:06 @monitor.py:310][0m SummaryGradient/fc-v/W/rms: 0.0081098
+[32m[1002 17:58:06 @monitor.py:310][0m SummaryGradient/fc-v/b/rms: 0.026625
+[32m[1002 17:58:06 @monitor.py:310][0m SummaryGradient/fc0/W/rms: 5.1049e-05
+[32m[1002 17:58:06 @monitor.py:310][0m SummaryGradient/fc0/b/rms: 0.00046386
+[32m[1002 17:58:06 @monitor.py:310][0m SummaryGradient/prelu/alpha/rms: 0.04678
+[32m[1002 17:58:06 @monitor.py:310][0m cost: -0.00089966
+[32m[1002 17:58:06 @monitor.py:310][0m importance: 1.0001
+[32m[1002 17:58:06 @monitor.py:310][0m input_queue_size: 0
+[32m[1002 17:58:06 @monitor.py:310][0m learning_rate: 0.001
+[32m[1002 17:58:06 @monitor.py:310][0m policy_loss: -1.8516
+[32m[1002 17:58:06 @monitor.py:310][0m predict_reward: 0.040262
+[32m[1002 17:58:06 @monitor.py:310][0m rms_advantage: 0.16102
+[32m[1002 17:58:06 @monitor.py:310][0m value_loss: 3.5445
+[32m[1002 17:58:06 @monitor.py:310][0m xentropy_loss: -180.8
+[32m[1002 17:58:06 @base.py:189][0m Start Epoch 20 ...
+[32m[1002 18:47:26 @base.py:199][0m Epoch 20 (global_step 24000) finished, time:2960.32 sec.
+[32m[1002 18:47:26 @saver.py:85][0m Model saved to train_log/train-unity3d-navigation_v3_rand_move_seg/model-24000.
+[32m[1002 18:47:26 @param.py:144][0m learning_rate at epoch 21 will change to 0.00030000
+[32m[1002 18:47:26 @monitor.py:310][0m SummaryGradient/conv0/W/rms: 0.0002182
+[32m[1002 18:47:26 @monitor.py:310][0m SummaryGradient/conv0/b/rms: 0.0010101
+[32m[1002 18:47:26 @monitor.py:310][0m SummaryGradient/conv1/W/rms: 0.00019515
+[32m[1002 18:47:26 @monitor.py:310][0m SummaryGradient/conv1/b/rms: 0.0013898
+[32m[1002 18:47:26 @monitor.py:310][0m SummaryGradient/conv2/W/rms: 0.00013797
+[32m[1002 18:47:26 @monitor.py:310][0m SummaryGradient/conv2/b/rms: 0.0009027
+[32m[1002 18:47:26 @monitor.py:310][0m SummaryGradient/conv3/W/rms: 0.00012358
+[32m[1002 18:47:26 @monitor.py:310][0m SummaryGradient/conv3/b/rms: 0.0037473
+[32m[1002 18:47:26 @monitor.py:310][0m SummaryGradient/fc-pi/W/rms: 0.0010598
+[32m[1002 18:47:26 @monitor.py:310][0m SummaryGradient/fc-pi/b/rms: 0.0030444
+[32m[1002 18:47:26 @monitor.py:310][0m SummaryGradient/fc-v/W/rms: 0.0057028
+[32m[1002 18:47:26 @monitor.py:310][0m SummaryGradient/fc-v/b/rms: 0.013483
+[32m[1002 18:47:26 @monitor.py:310][0m SummaryGradient/fc0/W/rms: 2.2147e-05
+[32m[1002 18:47:26 @monitor.py:310][0m SummaryGradient/fc0/b/rms: 0.00022064
+[32m[1002 18:47:26 @monitor.py:310][0m SummaryGradient/prelu/alpha/rms: 0.013983
+[32m[1002 18:47:26 @monitor.py:310][0m cost: -0.0043758
+[32m[1002 18:47:26 @monitor.py:310][0m importance: 1.0001
+[32m[1002 18:47:26 @monitor.py:310][0m input_queue_size: 0
+[32m[1002 18:47:26 @monitor.py:310][0m learning_rate: 0.001
+[32m[1002 18:47:26 @monitor.py:310][0m policy_loss: 0.065912
+[32m[1002 18:47:26 @monitor.py:310][0m predict_reward: -0.72093
+[32m[1002 18:47:26 @monitor.py:310][0m rms_advantage: 0.099072
+[32m[1002 18:47:26 @monitor.py:310][0m value_loss: 1.1696
+[32m[1002 18:47:26 @monitor.py:310][0m xentropy_loss: -179.56
+[32m[1002 18:47:26 @base.py:189][0m Start Epoch 21 ...
+[32m[1002 19:38:31 @base.py:199][0m Epoch 21 (global_step 25200) finished, time:3064.92 sec.
+[32m[1002 19:38:31 @saver.py:85][0m Model saved to train_log/train-unity3d-navigation_v3_rand_move_seg/model-25200.
+[32m[1002 19:38:31 @monitor.py:310][0m SummaryGradient/conv0/W/rms: 0.00019342
+[32m[1002 19:38:31 @monitor.py:310][0m SummaryGradient/conv0/b/rms: 0.00086465
+[32m[1002 19:38:31 @monitor.py:310][0m SummaryGradient/conv1/W/rms: 0.00018222
+[32m[1002 19:38:31 @monitor.py:310][0m SummaryGradient/conv1/b/rms: 0.0011676
+[32m[1002 19:38:31 @monitor.py:310][0m SummaryGradient/conv2/W/rms: 0.00014
+[32m[1002 19:38:31 @monitor.py:310][0m SummaryGradient/conv2/b/rms: 0.00097373
+[32m[1002 19:38:31 @monitor.py:310][0m SummaryGradient/conv3/W/rms: 0.00012454
+[32m[1002 19:38:31 @monitor.py:310][0m SummaryGradient/conv3/b/rms: 0.0025127
+[32m[1002 19:38:31 @monitor.py:310][0m SummaryGradient/fc-pi/W/rms: 0.00095216
+[32m[1002 19:38:31 @monitor.py:310][0m SummaryGradient/fc-pi/b/rms: 0.0027614
+[32m[1002 19:38:31 @monitor.py:310][0m SummaryGradient/fc-v/W/rms: 0.0036028
+[32m[1002 19:38:31 @monitor.py:310][0m SummaryGradient/fc-v/b/rms: 0.0096497
+[32m[1002 19:38:31 @monitor.py:310][0m SummaryGradient/fc0/W/rms: 2.1611e-05
+[32m[1002 19:38:31 @monitor.py:310][0m SummaryGradient/fc0/b/rms: 0.00018957
+[32m[1002 19:38:31 @monitor.py:310][0m SummaryGradient/prelu/alpha/rms: 0.017804
+[32m[1002 19:38:31 @monitor.py:310][0m cost: -0.012977
+[32m[1002 19:38:31 @monitor.py:310][0m importance: 0.99998
+[32m[1002 19:38:31 @monitor.py:310][0m input_queue_size: 0
+[32m[1002 19:38:31 @monitor.py:310][0m learning_rate: 0.0003
+[32m[1002 19:38:31 @monitor.py:310][0m policy_loss: -0.46252
+[32m[1002 19:38:31 @monitor.py:310][0m predict_reward: -0.63876
+[32m[1002 19:38:31 @monitor.py:310][0m rms_advantage: 0.083382
+[32m[1002 19:38:31 @monitor.py:310][0m value_loss: 0.58904
+[32m[1002 19:38:31 @monitor.py:310][0m xentropy_loss: -178.76
+[32m[1002 19:38:31 @base.py:189][0m Start Epoch 22 ...
+[32m[1002 20:29:37 @base.py:199][0m Epoch 22 (global_step 26400) finished, time:3066.09 sec.
+[32m[1002 20:29:37 @saver.py:85][0m Model saved to train_log/train-unity3d-navigation_v3_rand_move_seg/model-26400.
+[32m[1002 20:29:37 @monitor.py:310][0m SummaryGradient/conv0/W/rms: 0.00053739
+[32m[1002 20:29:37 @monitor.py:310][0m SummaryGradient/conv0/b/rms: 0.0027844
+[32m[1002 20:29:37 @monitor.py:310][0m SummaryGradient/conv1/W/rms: 0.00040937
+[32m[1002 20:29:37 @monitor.py:310][0m SummaryGradient/conv1/b/rms: 0.001922
+[32m[1002 20:29:37 @monitor.py:310][0m SummaryGradient/conv2/W/rms: 0.00032661
+[32m[1002 20:29:37 @monitor.py:310][0m SummaryGradient/conv2/b/rms: 0.0019955
+[32m[1002 20:29:37 @monitor.py:310][0m SummaryGradient/conv3/W/rms: 0.00034253
+[32m[1002 20:29:37 @monitor.py:310][0m SummaryGradient/conv3/b/rms: 0.0024151
+[32m[1002 20:29:37 @monitor.py:310][0m SummaryGradient/fc-pi/W/rms: 0.0012017
+[32m[1002 20:29:37 @monitor.py:310][0m SummaryGradient/fc-pi/b/rms: 0.0040597
+[32m[1002 20:29:37 @monitor.py:310][0m SummaryGradient/fc-v/W/rms: 0.0057237
+[32m[1002 20:29:37 @monitor.py:310][0m SummaryGradient/fc-v/b/rms: 0.018913
+[32m[1002 20:29:37 @monitor.py:310][0m SummaryGradient/fc0/W/rms: 5.1408e-05
+[32m[1002 20:29:37 @monitor.py:310][0m SummaryGradient/fc0/b/rms: 0.00035115
+[32m[1002 20:29:37 @monitor.py:310][0m SummaryGradient/prelu/alpha/rms: 0.045676
+[32m[1002 20:29:37 @monitor.py:310][0m cost: -0.0045517
+[32m[1002 20:29:37 @monitor.py:310][0m importance: 0.99995
+[32m[1002 20:29:37 @monitor.py:310][0m input_queue_size: 0
+[32m[1002 20:29:37 @monitor.py:310][0m learning_rate: 0.0003
+[32m[1002 20:29:37 @monitor.py:310][0m policy_loss: -0.42698
+[32m[1002 20:29:37 @monitor.py:310][0m predict_reward: 0.13246
+[32m[1002 20:29:37 @monitor.py:310][0m rms_advantage: 0.12022
+[32m[1002 20:29:37 @monitor.py:310][0m value_loss: 1.6598
+[32m[1002 20:29:37 @monitor.py:310][0m xentropy_loss: -181.55
+[32m[1002 20:29:37 @base.py:189][0m Start Epoch 23 ...
+[32m[1002 21:19:40 @base.py:199][0m Epoch 23 (global_step 27600) finished, time:3002.24 sec.
+[32m[1002 21:19:40 @saver.py:85][0m Model saved to train_log/train-unity3d-navigation_v3_rand_move_seg/model-27600.
+[32m[1002 21:19:40 @monitor.py:310][0m SummaryGradient/conv0/W/rms: 0.00026885
+[32m[1002 21:19:40 @monitor.py:310][0m SummaryGradient/conv0/b/rms: 0.0017976
+[32m[1002 21:19:40 @monitor.py:310][0m SummaryGradient/conv1/W/rms: 0.0001439
+[32m[1002 21:19:40 @monitor.py:310][0m SummaryGradient/conv1/b/rms: 0.0013512
+[32m[1002 21:19:40 @monitor.py:310][0m SummaryGradient/conv2/W/rms: 0.00011087
+[32m[1002 21:19:40 @monitor.py:310][0m SummaryGradient/conv2/b/rms: 0.0010793
+[32m[1002 21:19:40 @monitor.py:310][0m SummaryGradient/conv3/W/rms: 0.0001087
+[32m[1002 21:19:40 @monitor.py:310][0m SummaryGradient/conv3/b/rms: 0.0011159
+[32m[1002 21:19:40 @monitor.py:310][0m SummaryGradient/fc-pi/W/rms: 0.0004412
+[32m[1002 21:19:40 @monitor.py:310][0m SummaryGradient/fc-pi/b/rms: 0.0019609
+[32m[1002 21:19:40 @monitor.py:310][0m SummaryGradient/fc-v/W/rms: 0.0021614
+[32m[1002 21:19:40 @monitor.py:310][0m SummaryGradient/fc-v/b/rms: 0.0088502
+[32m[1002 21:19:40 @monitor.py:310][0m SummaryGradient/fc0/W/rms: 1.7158e-05
+[32m[1002 21:19:40 @monitor.py:310][0m SummaryGradient/fc0/b/rms: 0.00014574
+[32m[1002 21:19:40 @monitor.py:310][0m SummaryGradient/prelu/alpha/rms: 0.020586
+[32m[1002 21:19:40 @monitor.py:310][0m cost: -0.01498
+[32m[1002 21:19:40 @monitor.py:310][0m importance: 1
+[32m[1002 21:19:40 @monitor.py:310][0m input_queue_size: 0
+[32m[1002 21:19:40 @monitor.py:310][0m learning_rate: 0.0003
+[32m[1002 21:19:40 @monitor.py:310][0m policy_loss: -0.39669
+[32m[1002 21:19:40 @monitor.py:310][0m predict_reward: 0.28253
+[32m[1002 21:19:40 @monitor.py:310][0m rms_advantage: 0.057693
+[32m[1002 21:19:40 @monitor.py:310][0m value_loss: 0.29847
+[32m[1002 21:19:40 @monitor.py:310][0m xentropy_loss: -181.92
+[32m[1002 21:19:40 @base.py:189][0m Start Epoch 24 ...
+[32m[1002 22:09:18 @base.py:199][0m Epoch 24 (global_step 28800) finished, time:2978.39 sec.
+[32m[1002 22:09:18 @saver.py:85][0m Model saved to train_log/train-unity3d-navigation_v3_rand_move_seg/model-28800.
+[32m[1002 22:09:18 @monitor.py:310][0m SummaryGradient/conv0/W/rms: 0.0002171
+[32m[1002 22:09:18 @monitor.py:310][0m SummaryGradient/conv0/b/rms: 0.0015921
+[32m[1002 22:09:18 @monitor.py:310][0m SummaryGradient/conv1/W/rms: 0.00015626
+[32m[1002 22:09:18 @monitor.py:310][0m SummaryGradient/conv1/b/rms: 0.0011123
+[32m[1002 22:09:18 @monitor.py:310][0m SummaryGradient/conv2/W/rms: 0.00011956
+[32m[1002 22:09:18 @monitor.py:310][0m SummaryGradient/conv2/b/rms: 0.00098113
+[32m[1002 22:09:18 @monitor.py:310][0m SummaryGradient/conv3/W/rms: 0.0001258
+[32m[1002 22:09:18 @monitor.py:310][0m SummaryGradient/conv3/b/rms: 0.0010645
+[32m[1002 22:09:18 @monitor.py:310][0m SummaryGradient/fc-pi/W/rms: 0.00049552
+[32m[1002 22:09:18 @monitor.py:310][0m SummaryGradient/fc-pi/b/rms: 0.002064
+[32m[1002 22:09:18 @monitor.py:310][0m SummaryGradient/fc-v/W/rms: 0.0024036
+[32m[1002 22:09:18 @monitor.py:310][0m SummaryGradient/fc-v/b/rms: 0.00798
+[32m[1002 22:09:18 @monitor.py:310][0m SummaryGradient/fc0/W/rms: 1.8685e-05
+[32m[1002 22:09:18 @monitor.py:310][0m SummaryGradient/fc0/b/rms: 0.00013606
+[32m[1002 22:09:18 @monitor.py:310][0m SummaryGradient/prelu/alpha/rms: 0.022614
+[32m[1002 22:09:18 @monitor.py:310][0m cost: -0.013806
+[32m[1002 22:09:18 @monitor.py:310][0m importance: 1
+[32m[1002 22:09:18 @monitor.py:310][0m input_queue_size: 0
+[32m[1002 22:09:18 @monitor.py:310][0m learning_rate: 0.0003
+[32m[1002 22:09:18 @monitor.py:310][0m policy_loss: -0.30264
+[32m[1002 22:09:18 @monitor.py:310][0m predict_reward: 0.31493
+[32m[1002 22:09:18 @monitor.py:310][0m rms_advantage: 0.054372
+[32m[1002 22:09:18 @monitor.py:310][0m value_loss: 0.33197
+[32m[1002 22:09:18 @monitor.py:310][0m xentropy_loss: -179.65
+[32m[1002 22:09:18 @base.py:189][0m Start Epoch 25 ...
+[32m[1002 22:59:01 @base.py:199][0m Epoch 25 (global_step 30000) finished, time:2983.32 sec.
+[32m[1002 22:59:01 @saver.py:85][0m Model saved to train_log/train-unity3d-navigation_v3_rand_move_seg/model-30000.
+[32m[1002 22:59:01 @monitor.py:310][0m SummaryGradient/conv0/W/rms: 0.00027355
+[32m[1002 22:59:01 @monitor.py:310][0m SummaryGradient/conv0/b/rms: 0.0013962
+[32m[1002 22:59:01 @monitor.py:310][0m SummaryGradient/conv1/W/rms: 0.00017765
+[32m[1002 22:59:01 @monitor.py:310][0m SummaryGradient/conv1/b/rms: 0.0010849
+[32m[1002 22:59:01 @monitor.py:310][0m SummaryGradient/conv2/W/rms: 0.00013367
+[32m[1002 22:59:01 @monitor.py:310][0m SummaryGradient/conv2/b/rms: 0.00085575
+[32m[1002 22:59:01 @monitor.py:310][0m SummaryGradient/conv3/W/rms: 0.00013902
+[32m[1002 22:59:01 @monitor.py:310][0m SummaryGradient/conv3/b/rms: 0.00093077
+[32m[1002 22:59:01 @monitor.py:310][0m SummaryGradient/fc-pi/W/rms: 0.00045777
+[32m[1002 22:59:01 @monitor.py:310][0m SummaryGradient/fc-pi/b/rms: 0.0020005
+[32m[1002 22:59:01 @monitor.py:310][0m SummaryGradient/fc-v/W/rms: 0.0021133
+[32m[1002 22:59:01 @monitor.py:310][0m SummaryGradient/fc-v/b/rms: 0.0069272
+[32m[1002 22:59:01 @monitor.py:310][0m SummaryGradient/fc0/W/rms: 1.8732e-05
+[32m[1002 22:59:01 @monitor.py:310][0m SummaryGradient/fc0/b/rms: 0.00015755
+[32m[1002 22:59:01 @monitor.py:310][0m SummaryGradient/prelu/alpha/rms: 0.021733
+[32m[1002 22:59:01 @monitor.py:310][0m cost: -0.015612
+[32m[1002 22:59:01 @monitor.py:310][0m importance: 0.99999
+[32m[1002 22:59:01 @monitor.py:310][0m input_queue_size: 0
+[32m[1002 22:59:01 @monitor.py:310][0m learning_rate: 0.0003
+[32m[1002 22:59:01 @monitor.py:310][0m policy_loss: -0.5448
+[32m[1002 22:59:01 @monitor.py:310][0m predict_reward: 0.31133
+[32m[1002 22:59:01 @monitor.py:310][0m rms_advantage: 0.057188
+[32m[1002 22:59:01 @monitor.py:310][0m value_loss: 0.33365
+[32m[1002 22:59:01 @monitor.py:310][0m xentropy_loss: -178.71
+[32m[1002 22:59:01 @base.py:189][0m Start Epoch 26 ...
+[32m[1002 23:48:24 @base.py:199][0m Epoch 26 (global_step 31200) finished, time:2962.37 sec.
+[32m[1002 23:48:24 @saver.py:85][0m Model saved to train_log/train-unity3d-navigation_v3_rand_move_seg/model-31200.
+[32m[1002 23:48:24 @monitor.py:310][0m SummaryGradient/conv0/W/rms: 0.00036207
+[32m[1002 23:48:24 @monitor.py:310][0m SummaryGradient/conv0/b/rms: 0.0019904
+[32m[1002 23:48:24 @monitor.py:310][0m SummaryGradient/conv1/W/rms: 0.00019985
+[32m[1002 23:48:24 @monitor.py:310][0m SummaryGradient/conv1/b/rms: 0.0014554
+[32m[1002 23:48:24 @monitor.py:310][0m SummaryGradient/conv2/W/rms: 0.00014772
+[32m[1002 23:48:24 @monitor.py:310][0m SummaryGradient/conv2/b/rms: 0.0013035
+[32m[1002 23:48:24 @monitor.py:310][0m SummaryGradient/conv3/W/rms: 0.00016209
+[32m[1002 23:48:24 @monitor.py:310][0m SummaryGradient/conv3/b/rms: 0.0013854
+[32m[1002 23:48:24 @monitor.py:310][0m SummaryGradient/fc-pi/W/rms: 0.00061984
+[32m[1002 23:48:24 @monitor.py:310][0m SummaryGradient/fc-pi/b/rms: 0.0020904
+[32m[1002 23:48:24 @monitor.py:310][0m SummaryGradient/fc-v/W/rms: 0.0030699
+[32m[1002 23:48:24 @monitor.py:310][0m SummaryGradient/fc-v/b/rms: 0.0079904
+[32m[1002 23:48:24 @monitor.py:310][0m SummaryGradient/fc0/W/rms: 2.2252e-05
+[32m[1002 23:48:24 @monitor.py:310][0m SummaryGradient/fc0/b/rms: 0.00017496
+[32m[1002 23:48:24 @monitor.py:310][0m SummaryGradient/prelu/alpha/rms: 0.01706
+[32m[1002 23:48:24 @monitor.py:310][0m cost: -0.012665
+[32m[1002 23:48:24 @monitor.py:310][0m importance: 0.99992
+[32m[1002 23:48:24 @monitor.py:310][0m input_queue_size: 0
+[32m[1002 23:48:24 @monitor.py:310][0m learning_rate: 0.0003
+[32m[1002 23:48:24 @monitor.py:310][0m policy_loss: -0.49563
+[32m[1002 23:48:24 @monitor.py:310][0m predict_reward: 0.23752
+[32m[1002 23:48:24 @monitor.py:310][0m rms_advantage: 0.068605
+[32m[1002 23:48:24 @monitor.py:310][0m value_loss: 0.6518
+[32m[1002 23:48:24 @monitor.py:310][0m xentropy_loss: -177.73
+[32m[1002 23:48:24 @base.py:189][0m Start Epoch 27 ...
+[32m[1003 00:38:00 @base.py:199][0m Epoch 27 (global_step 32400) finished, time:2975.84 sec.
+[32m[1003 00:38:00 @saver.py:85][0m Model saved to train_log/train-unity3d-navigation_v3_rand_move_seg/model-32400.
+[32m[1003 00:38:00 @monitor.py:310][0m SummaryGradient/conv0/W/rms: 0.00024515
+[32m[1003 00:38:00 @monitor.py:310][0m SummaryGradient/conv0/b/rms: 0.0011622
+[32m[1003 00:38:00 @monitor.py:310][0m SummaryGradient/conv1/W/rms: 0.00014371
+[32m[1003 00:38:00 @monitor.py:310][0m SummaryGradient/conv1/b/rms: 0.00081333
+[32m[1003 00:38:00 @monitor.py:310][0m SummaryGradient/conv2/W/rms: 0.00011229
+[32m[1003 00:38:00 @monitor.py:310][0m SummaryGradient/conv2/b/rms: 0.0006823
+[32m[1003 00:38:00 @monitor.py:310][0m SummaryGradient/conv3/W/rms: 0.00012505
+[32m[1003 00:38:00 @monitor.py:310][0m SummaryGradient/conv3/b/rms: 0.00079779
+[32m[1003 00:38:00 @monitor.py:310][0m SummaryGradient/fc-pi/W/rms: 0.00051117
+[32m[1003 00:38:00 @monitor.py:310][0m SummaryGradient/fc-pi/b/rms: 0.001961
+[32m[1003 00:38:00 @monitor.py:310][0m SummaryGradient/fc-v/W/rms: 0.0022032
+[32m[1003 00:38:00 @monitor.py:310][0m SummaryGradient/fc-v/b/rms: 0.006909
+[32m[1003 00:38:00 @monitor.py:310][0m SummaryGradient/fc0/W/rms: 2.0405e-05
+[32m[1003 00:38:00 @monitor.py:310][0m SummaryGradient/fc0/b/rms: 0.000134
+[32m[1003 00:38:00 @monitor.py:310][0m SummaryGradient/prelu/alpha/rms: 0.022195
+[32m[1003 00:38:00 @monitor.py:310][0m cost: -0.0095894
+[32m[1003 00:38:00 @monitor.py:310][0m importance: 1
+[32m[1003 00:38:00 @monitor.py:310][0m input_queue_size: 0
+[32m[1003 00:38:00 @monitor.py:310][0m learning_rate: 0.0003
+[32m[1003 00:38:00 @monitor.py:310][0m policy_loss: 0.26457
+[32m[1003 00:38:00 @monitor.py:310][0m predict_reward: 0.31858
+[32m[1003 00:38:00 @monitor.py:310][0m rms_advantage: 0.058711
+[32m[1003 00:38:00 @monitor.py:310][0m value_loss: 0.26611
+[32m[1003 00:38:00 @monitor.py:310][0m xentropy_loss: -175.81
+[32m[1003 00:38:00 @base.py:189][0m Start Epoch 28 ...
+[32m[1003 01:27:29 @base.py:199][0m Epoch 28 (global_step 33600) finished, time:2969.29 sec.
+[32m[1003 01:27:29 @saver.py:85][0m Model saved to train_log/train-unity3d-navigation_v3_rand_move_seg/model-33600.
+[32m[1003 01:27:29 @monitor.py:310][0m SummaryGradient/conv0/W/rms: 0.00018309
+[32m[1003 01:27:29 @monitor.py:310][0m SummaryGradient/conv0/b/rms: 0.0012318
+[32m[1003 01:27:29 @monitor.py:310][0m SummaryGradient/conv1/W/rms: 9.9021e-05
+[32m[1003 01:27:29 @monitor.py:310][0m SummaryGradient/conv1/b/rms: 0.00087161
+[32m[1003 01:27:29 @monitor.py:310][0m SummaryGradient/conv2/W/rms: 8.2016e-05
+[32m[1003 01:27:29 @monitor.py:310][0m SummaryGradient/conv2/b/rms: 0.00074728
+[32m[1003 01:27:29 @monitor.py:310][0m SummaryGradient/conv3/W/rms: 9.7794e-05
+[32m[1003 01:27:29 @monitor.py:310][0m SummaryGradient/conv3/b/rms: 0.00077486
+[32m[1003 01:27:29 @monitor.py:310][0m SummaryGradient/fc-pi/W/rms: 0.00032998
+[32m[1003 01:27:29 @monitor.py:310][0m SummaryGradient/fc-pi/b/rms: 0.0012775
+[32m[1003 01:27:29 @monitor.py:310][0m SummaryGradient/fc-v/W/rms: 0.0012707
+[32m[1003 01:27:29 @monitor.py:310][0m SummaryGradient/fc-v/b/rms: 0.0039368
+[32m[1003 01:27:29 @monitor.py:310][0m SummaryGradient/fc0/W/rms: 1.3594e-05
+[32m[1003 01:27:29 @monitor.py:310][0m SummaryGradient/fc0/b/rms: 9.8855e-05
+[32m[1003 01:27:29 @monitor.py:310][0m SummaryGradient/prelu/alpha/rms: 0.012982
+[32m[1003 01:27:29 @monitor.py:310][0m cost: -0.014094
+[32m[1003 01:27:29 @monitor.py:310][0m importance: 0.99999
+[32m[1003 01:27:29 @monitor.py:310][0m input_queue_size: 0
+[32m[1003 01:27:29 @monitor.py:310][0m learning_rate: 0.0003
+[32m[1003 01:27:29 @monitor.py:310][0m policy_loss: -0.14963
+[32m[1003 01:27:29 @monitor.py:310][0m predict_reward: 0.35144
+[32m[1003 01:27:29 @monitor.py:310][0m rms_advantage: 0.041593
+[32m[1003 01:27:29 @monitor.py:310][0m value_loss: 0.14693
+[32m[1003 01:27:29 @monitor.py:310][0m xentropy_loss: -180.13
+[32m[1003 01:27:29 @base.py:189][0m Start Epoch 29 ...
+[32m[1003 02:16:57 @base.py:199][0m Epoch 29 (global_step 34800) finished, time:2967.96 sec.
+[32m[1003 02:16:57 @saver.py:85][0m Model saved to train_log/train-unity3d-navigation_v3_rand_move_seg/model-34800.
+[32m[1003 02:16:57 @monitor.py:310][0m SummaryGradient/conv0/W/rms: 0.0002883
+[32m[1003 02:16:57 @monitor.py:310][0m SummaryGradient/conv0/b/rms: 0.001254
+[32m[1003 02:16:57 @monitor.py:310][0m SummaryGradient/conv1/W/rms: 0.00017672
+[32m[1003 02:16:57 @monitor.py:310][0m SummaryGradient/conv1/b/rms: 0.00088888
+[32m[1003 02:16:57 @monitor.py:310][0m SummaryGradient/conv2/W/rms: 0.00013925
+[32m[1003 02:16:57 @monitor.py:310][0m SummaryGradient/conv2/b/rms: 0.00085869
+[32m[1003 02:16:57 @monitor.py:310][0m SummaryGradient/conv3/W/rms: 0.00016216
+[32m[1003 02:16:57 @monitor.py:310][0m SummaryGradient/conv3/b/rms: 0.0010222
+[32m[1003 02:16:57 @monitor.py:310][0m SummaryGradient/fc-pi/W/rms: 0.00057198
+[32m[1003 02:16:57 @monitor.py:310][0m SummaryGradient/fc-pi/b/rms: 0.0019357
+[32m[1003 02:16:57 @monitor.py:310][0m SummaryGradient/fc-v/W/rms: 0.0034525
+[32m[1003 02:16:57 @monitor.py:310][0m SummaryGradient/fc-v/b/rms: 0.0091458
+[32m[1003 02:16:57 @monitor.py:310][0m SummaryGradient/fc0/W/rms: 2.2445e-05
+[32m[1003 02:16:57 @monitor.py:310][0m SummaryGradient/fc0/b/rms: 0.00016241
+[32m[1003 02:16:57 @monitor.py:310][0m SummaryGradient/prelu/alpha/rms: 0.018985
+[32m[1003 02:16:57 @monitor.py:310][0m cost: -0.0087244
+[32m[1003 02:16:57 @monitor.py:310][0m importance: 0.99998
+[32m[1003 02:16:57 @monitor.py:310][0m input_queue_size: 0
+[32m[1003 02:16:57 @monitor.py:310][0m learning_rate: 0.0003
+[32m[1003 02:16:57 @monitor.py:310][0m policy_loss: 0.15191
+[32m[1003 02:16:57 @monitor.py:310][0m predict_reward: 0.27792
+[32m[1003 02:16:57 @monitor.py:310][0m rms_advantage: 0.065512
+[32m[1003 02:16:57 @monitor.py:310][0m value_loss: 0.54614
+[32m[1003 02:16:57 @monitor.py:310][0m xentropy_loss: -181.48
+[32m[1003 02:16:57 @base.py:189][0m Start Epoch 30 ...
+[32m[1003 03:04:56 @base.py:199][0m Epoch 30 (global_step 36000) finished, time:2878.71 sec.
+[32m[1003 03:04:56 @saver.py:85][0m Model saved to train_log/train-unity3d-navigation_v3_rand_move_seg/model-36000.
+[32m[1003 03:04:56 @monitor.py:310][0m SummaryGradient/conv0/W/rms: 0.00045889
+[32m[1003 03:04:56 @monitor.py:310][0m SummaryGradient/conv0/b/rms: 0.0015445
+[32m[1003 03:04:56 @monitor.py:310][0m SummaryGradient/conv1/W/rms: 0.0002596
+[32m[1003 03:04:56 @monitor.py:310][0m SummaryGradient/conv1/b/rms: 0.0012567
+[32m[1003 03:04:56 @monitor.py:310][0m SummaryGradient/conv2/W/rms: 0.00022408
+[32m[1003 03:04:56 @monitor.py:310][0m SummaryGradient/conv2/b/rms: 0.0014297
+[32m[1003 03:04:56 @monitor.py:310][0m SummaryGradient/conv3/W/rms: 0.0002311
+[32m[1003 03:04:56 @monitor.py:310][0m SummaryGradient/conv3/b/rms: 0.0015313
+[32m[1003 03:04:56 @monitor.py:310][0m SummaryGradient/fc-pi/W/rms: 0.00055931
+[32m[1003 03:04:56 @monitor.py:310][0m SummaryGradient/fc-pi/b/rms: 0.0018547
+[32m[1003 03:04:56 @monitor.py:310][0m SummaryGradient/fc-v/W/rms: 0.0035234
+[32m[1003 03:04:56 @monitor.py:310][0m SummaryGradient/fc-v/b/rms: 0.0099236
+[32m[1003 03:04:56 @monitor.py:310][0m SummaryGradient/fc0/W/rms: 2.8248e-05
+[32m[1003 03:04:56 @monitor.py:310][0m SummaryGradient/fc0/b/rms: 0.00018985
+[32m[1003 03:04:56 @monitor.py:310][0m SummaryGradient/prelu/alpha/rms: 0.019579
+[32m[1003 03:04:56 @monitor.py:310][0m cost: -0.010524
+[32m[1003 03:04:56 @monitor.py:310][0m importance: 1
+[32m[1003 03:04:56 @monitor.py:310][0m input_queue_size: 0
+[32m[1003 03:04:56 @monitor.py:310][0m learning_rate: 0.0003
+[32m[1003 03:04:56 @monitor.py:310][0m policy_loss: -0.68042
+[32m[1003 03:04:56 @monitor.py:310][0m predict_reward: 0.29074
+[32m[1003 03:04:56 @monitor.py:310][0m rms_advantage: 0.075647
+[32m[1003 03:04:56 @monitor.py:310][0m value_loss: 1.1274
+[32m[1003 03:04:56 @monitor.py:310][0m xentropy_loss: -179.4
+[32m[1003 03:04:56 @base.py:189][0m Start Epoch 31 ...
+[32m[1003 03:51:11 @base.py:199][0m Epoch 31 (global_step 37200) finished, time:2775.34 sec.
+[32m[1003 03:51:11 @saver.py:85][0m Model saved to train_log/train-unity3d-navigation_v3_rand_move_seg/model-37200.
+[32m[1003 03:51:11 @monitor.py:310][0m SummaryGradient/conv0/W/rms: 0.00014924
+[32m[1003 03:51:11 @monitor.py:310][0m SummaryGradient/conv0/b/rms: 0.00078298
+[32m[1003 03:51:11 @monitor.py:310][0m SummaryGradient/conv1/W/rms: 0.0001044
+[32m[1003 03:51:11 @monitor.py:310][0m SummaryGradient/conv1/b/rms: 0.00060923
+[32m[1003 03:51:11 @monitor.py:310][0m SummaryGradient/conv2/W/rms: 0.00011145
+[32m[1003 03:51:11 @monitor.py:310][0m SummaryGradient/conv2/b/rms: 0.00057521
+[32m[1003 03:51:11 @monitor.py:310][0m SummaryGradient/conv3/W/rms: 0.00012416
+[32m[1003 03:51:11 @monitor.py:310][0m SummaryGradient/conv3/b/rms: 0.0006951
+[32m[1003 03:51:11 @monitor.py:310][0m SummaryGradient/fc-pi/W/rms: 0.00030498
+[32m[1003 03:51:11 @monitor.py:310][0m SummaryGradient/fc-pi/b/rms: 0.0013523
+[32m[1003 03:51:11 @monitor.py:310][0m SummaryGradient/fc-v/W/rms: 0.0012003
+[32m[1003 03:51:11 @monitor.py:310][0m SummaryGradient/fc-v/b/rms: 0.004634
+[32m[1003 03:51:11 @monitor.py:310][0m SummaryGradient/fc0/W/rms: 1.5035e-05
+[32m[1003 03:51:11 @monitor.py:310][0m SummaryGradient/fc0/b/rms: 0.00011036
+[32m[1003 03:51:11 @monitor.py:310][0m SummaryGradient/prelu/alpha/rms: 0.012901
+[32m[1003 03:51:11 @monitor.py:310][0m cost: -0.01207
+[32m[1003 03:51:11 @monitor.py:310][0m importance: 1
+[32m[1003 03:51:11 @monitor.py:310][0m input_queue_size: 0
+[32m[1003 03:51:11 @monitor.py:310][0m learning_rate: 0.0003
+[32m[1003 03:51:11 @monitor.py:310][0m policy_loss: 0.11589
+[32m[1003 03:51:11 @monitor.py:310][0m predict_reward: 0.35738
+[32m[1003 03:51:11 @monitor.py:310][0m rms_advantage: 0.040013
+[32m[1003 03:51:11 @monitor.py:310][0m value_loss: 0.13554
+[32m[1003 03:51:11 @monitor.py:310][0m xentropy_loss: -179.64
+[32m[1003 03:51:11 @base.py:189][0m Start Epoch 32 ...
+[32m[1003 04:37:37 @base.py:199][0m Epoch 32 (global_step 38400) finished, time:2785.73 sec.
+[32m[1003 04:37:37 @saver.py:85][0m Model saved to train_log/train-unity3d-navigation_v3_rand_move_seg/model-38400.
+[32m[1003 04:37:37 @monitor.py:310][0m SummaryGradient/conv0/W/rms: 0.00029444
+[32m[1003 04:37:37 @monitor.py:310][0m SummaryGradient/conv0/b/rms: 0.00092103
+[32m[1003 04:37:37 @monitor.py:310][0m SummaryGradient/conv1/W/rms: 0.00020844
+[32m[1003 04:37:37 @monitor.py:310][0m SummaryGradient/conv1/b/rms: 0.00078562
+[32m[1003 04:37:37 @monitor.py:310][0m SummaryGradient/conv2/W/rms: 0.00019181
+[32m[1003 04:37:37 @monitor.py:310][0m SummaryGradient/conv2/b/rms: 0.00085992
+[32m[1003 04:37:37 @monitor.py:310][0m SummaryGradient/conv3/W/rms: 0.00017399
+[32m[1003 04:37:37 @monitor.py:310][0m SummaryGradient/conv3/b/rms: 0.00094496
+[32m[1003 04:37:37 @monitor.py:310][0m SummaryGradient/fc-pi/W/rms: 0.0006045
+[32m[1003 04:37:37 @monitor.py:310][0m SummaryGradient/fc-pi/b/rms: 0.0026251
+[32m[1003 04:37:37 @monitor.py:310][0m SummaryGradient/fc-v/W/rms: 0.0034913
+[32m[1003 04:37:37 @monitor.py:310][0m SummaryGradient/fc-v/b/rms: 0.011259
+[32m[1003 04:37:37 @monitor.py:310][0m SummaryGradient/fc0/W/rms: 2.847e-05
+[32m[1003 04:37:37 @monitor.py:310][0m SummaryGradient/fc0/b/rms: 0.00019391
+[32m[1003 04:37:37 @monitor.py:310][0m SummaryGradient/prelu/alpha/rms: 0.016752
+[32m[1003 04:37:37 @monitor.py:310][0m cost: -0.010649
+[32m[1003 04:37:37 @monitor.py:310][0m importance: 0.99996
+[32m[1003 04:37:37 @monitor.py:310][0m input_queue_size: 0
+[32m[1003 04:37:37 @monitor.py:310][0m learning_rate: 0.0003
+[32m[1003 04:37:37 @monitor.py:310][0m policy_loss: -0.95563
+[32m[1003 04:37:37 @monitor.py:310][0m predict_reward: 0.34293
+[32m[1003 04:37:37 @monitor.py:310][0m rms_advantage: 0.078199
+[32m[1003 04:37:37 @monitor.py:310][0m value_loss: 1.4192
+[32m[1003 04:37:37 @monitor.py:310][0m xentropy_loss: -182.66
+[32m[1003 04:37:37 @base.py:189][0m Start Epoch 33 ...
+[32m[1003 05:23:59 @base.py:199][0m Epoch 33 (global_step 39600) finished, time:2781.87 sec.
+[32m[1003 05:23:59 @saver.py:85][0m Model saved to train_log/train-unity3d-navigation_v3_rand_move_seg/model-39600.
+[32m[1003 05:23:59 @monitor.py:310][0m SummaryGradient/conv0/W/rms: 0.00024936
+[32m[1003 05:23:59 @monitor.py:310][0m SummaryGradient/conv0/b/rms: 0.0010396
+[32m[1003 05:23:59 @monitor.py:310][0m SummaryGradient/conv1/W/rms: 0.00016091
+[32m[1003 05:23:59 @monitor.py:310][0m SummaryGradient/conv1/b/rms: 0.00074435
+[32m[1003 05:23:59 @monitor.py:310][0m SummaryGradient/conv2/W/rms: 0.00015357
+[32m[1003 05:23:59 @monitor.py:310][0m SummaryGradient/conv2/b/rms: 0.00083365
+[32m[1003 05:23:59 @monitor.py:310][0m SummaryGradient/conv3/W/rms: 0.00015829
+[32m[1003 05:23:59 @monitor.py:310][0m SummaryGradient/conv3/b/rms: 0.00097394
+[32m[1003 05:23:59 @monitor.py:310][0m SummaryGradient/fc-pi/W/rms: 0.00061025
+[32m[1003 05:23:59 @monitor.py:310][0m SummaryGradient/fc-pi/b/rms: 0.0018419
+[32m[1003 05:23:59 @monitor.py:310][0m SummaryGradient/fc-v/W/rms: 0.0030537
+[32m[1003 05:23:59 @monitor.py:310][0m SummaryGradient/fc-v/b/rms: 0.0084654
+[32m[1003 05:23:59 @monitor.py:310][0m SummaryGradient/fc0/W/rms: 2.1818e-05
+[32m[1003 05:23:59 @monitor.py:310][0m SummaryGradient/fc0/b/rms: 0.00014
+[32m[1003 05:23:59 @monitor.py:310][0m SummaryGradient/prelu/alpha/rms: 0.017262
+[32m[1003 05:23:59 @monitor.py:310][0m cost: -0.011544
+[32m[1003 05:23:59 @monitor.py:310][0m importance: 0.99998
+[32m[1003 05:23:59 @monitor.py:310][0m input_queue_size: 0
+[32m[1003 05:23:59 @monitor.py:310][0m learning_rate: 0.0003
+[32m[1003 05:23:59 @monitor.py:310][0m policy_loss: -0.11211
+[32m[1003 05:23:59 @monitor.py:310][0m predict_reward: 0.29586
+[32m[1003 05:23:59 @monitor.py:310][0m rms_advantage: 0.061552
+[32m[1003 05:23:59 @monitor.py:310][0m value_loss: 0.39794
+[32m[1003 05:23:59 @monitor.py:310][0m xentropy_loss: -176.35
+[32m[1003 05:23:59 @base.py:189][0m Start Epoch 34 ...
+[32m[1003 06:10:33 @base.py:199][0m Epoch 34 (global_step 40800) finished, time:2793.98 sec.
+[32m[1003 06:10:33 @saver.py:85][0m Model saved to train_log/train-unity3d-navigation_v3_rand_move_seg/model-40800.
+[32m[1003 06:10:33 @monitor.py:310][0m SummaryGradient/conv0/W/rms: 0.0002922
+[32m[1003 06:10:33 @monitor.py:310][0m SummaryGradient/conv0/b/rms: 0.0010055
+[32m[1003 06:10:33 @monitor.py:310][0m SummaryGradient/conv1/W/rms: 0.00017207
+[32m[1003 06:10:33 @monitor.py:310][0m SummaryGradient/conv1/b/rms: 0.0007514
+[32m[1003 06:10:33 @monitor.py:310][0m SummaryGradient/conv2/W/rms: 0.0001829
+[32m[1003 06:10:33 @monitor.py:310][0m SummaryGradient/conv2/b/rms: 0.00082676
+[32m[1003 06:10:33 @monitor.py:310][0m SummaryGradient/conv3/W/rms: 0.0001966
+[32m[1003 06:10:33 @monitor.py:310][0m SummaryGradient/conv3/b/rms: 0.00090191
+[32m[1003 06:10:33 @monitor.py:310][0m SummaryGradient/fc-pi/W/rms: 0.00061349
+[32m[1003 06:10:33 @monitor.py:310][0m SummaryGradient/fc-pi/b/rms: 0.0016435
+[32m[1003 06:10:33 @monitor.py:310][0m SummaryGradient/fc-v/W/rms: 0.0032579
+[32m[1003 06:10:33 @monitor.py:310][0m SummaryGradient/fc-v/b/rms: 0.0073294
+[32m[1003 06:10:33 @monitor.py:310][0m SummaryGradient/fc0/W/rms: 2.7299e-05
+[32m[1003 06:10:33 @monitor.py:310][0m SummaryGradient/fc0/b/rms: 0.00013939
+[32m[1003 06:10:33 @monitor.py:310][0m SummaryGradient/prelu/alpha/rms: 0.023121
+[32m[1003 06:10:33 @monitor.py:310][0m cost: -0.012403
+[32m[1003 06:10:33 @monitor.py:310][0m importance: 1
+[32m[1003 06:10:33 @monitor.py:310][0m input_queue_size: 0
+[32m[1003 06:10:33 @monitor.py:310][0m learning_rate: 0.0003
+[32m[1003 06:10:33 @monitor.py:310][0m policy_loss: -0.41544
+[32m[1003 06:10:33 @monitor.py:310][0m predict_reward: 0.27357
+[32m[1003 06:10:33 @monitor.py:310][0m rms_advantage: 0.058642
+[32m[1003 06:10:33 @monitor.py:310][0m value_loss: 0.64486
+[32m[1003 06:10:33 @monitor.py:310][0m xentropy_loss: -181.7
+[32m[1003 06:10:33 @base.py:189][0m Start Epoch 35 ...
+[32m[1003 06:57:03 @base.py:199][0m Epoch 35 (global_step 42000) finished, time:2789.70 sec.
+[32m[1003 06:57:03 @saver.py:85][0m Model saved to train_log/train-unity3d-navigation_v3_rand_move_seg/model-42000.
+[32m[1003 06:57:03 @monitor.py:310][0m SummaryGradient/conv0/W/rms: 0.00018743
+[32m[1003 06:57:03 @monitor.py:310][0m SummaryGradient/conv0/b/rms: 0.0008016
+[32m[1003 06:57:03 @monitor.py:310][0m SummaryGradient/conv1/W/rms: 0.00012874
+[32m[1003 06:57:03 @monitor.py:310][0m SummaryGradient/conv1/b/rms: 0.00056871
+[32m[1003 06:57:03 @monitor.py:310][0m SummaryGradient/conv2/W/rms: 0.00011271
+[32m[1003 06:57:03 @monitor.py:310][0m SummaryGradient/conv2/b/rms: 0.00059367
+[32m[1003 06:57:03 @monitor.py:310][0m SummaryGradient/conv3/W/rms: 0.00011697
+[32m[1003 06:57:03 @monitor.py:310][0m SummaryGradient/conv3/b/rms: 0.00067884
+[32m[1003 06:57:03 @monitor.py:310][0m SummaryGradient/fc-pi/W/rms: 0.00033591
+[32m[1003 06:57:03 @monitor.py:310][0m SummaryGradient/fc-pi/b/rms: 0.0012775
+[32m[1003 06:57:03 @monitor.py:310][0m SummaryGradient/fc-v/W/rms: 0.0014329
+[32m[1003 06:57:03 @monitor.py:310][0m SummaryGradient/fc-v/b/rms: 0.0057897
+[32m[1003 06:57:03 @monitor.py:310][0m SummaryGradient/fc0/W/rms: 1.5993e-05
+[32m[1003 06:57:03 @monitor.py:310][0m SummaryGradient/fc0/b/rms: 0.00010803
+[32m[1003 06:57:03 @monitor.py:310][0m SummaryGradient/prelu/alpha/rms: 0.014059
+[32m[1003 06:57:03 @monitor.py:310][0m cost: -0.014958
+[32m[1003 06:57:03 @monitor.py:310][0m importance: 0.99998
+[32m[1003 06:57:03 @monitor.py:310][0m input_queue_size: 0
+[32m[1003 06:57:03 @monitor.py:310][0m learning_rate: 0.0003
+[32m[1003 06:57:03 @monitor.py:310][0m policy_loss: -0.33915
+[32m[1003 06:57:03 @monitor.py:310][0m predict_reward: 0.34224
+[32m[1003 06:57:03 @monitor.py:310][0m rms_advantage: 0.045873
+[32m[1003 06:57:03 @monitor.py:310][0m value_loss: 0.23695
+[32m[1003 06:57:03 @monitor.py:310][0m xentropy_loss: -181.24
+[32m[1003 06:57:03 @base.py:189][0m Start Epoch 36 ...
+[32m[1003 07:43:17 @base.py:199][0m Epoch 36 (global_step 43200) finished, time:2774.08 sec.
+[32m[1003 07:43:17 @saver.py:85][0m Model saved to train_log/train-unity3d-navigation_v3_rand_move_seg/model-43200.
+[32m[1003 07:43:17 @monitor.py:310][0m SummaryGradient/conv0/W/rms: 0.00017828
+[32m[1003 07:43:17 @monitor.py:310][0m SummaryGradient/conv0/b/rms: 0.0007274
+[32m[1003 07:43:17 @monitor.py:310][0m SummaryGradient/conv1/W/rms: 9.9348e-05
+[32m[1003 07:43:17 @monitor.py:310][0m SummaryGradient/conv1/b/rms: 0.00052662
+[32m[1003 07:43:17 @monitor.py:310][0m SummaryGradient/conv2/W/rms: 9.8175e-05
+[32m[1003 07:43:17 @monitor.py:310][0m SummaryGradient/conv2/b/rms: 0.00049928
+[32m[1003 07:43:17 @monitor.py:310][0m SummaryGradient/conv3/W/rms: 0.00010433
+[32m[1003 07:43:17 @monitor.py:310][0m SummaryGradient/conv3/b/rms: 0.00057155
+[32m[1003 07:43:17 @monitor.py:310][0m SummaryGradient/fc-pi/W/rms: 0.00035461
+[32m[1003 07:43:17 @monitor.py:310][0m SummaryGradient/fc-pi/b/rms: 0.0014121
+[32m[1003 07:43:17 @monitor.py:310][0m SummaryGradient/fc-v/W/rms: 0.0015586
+[32m[1003 07:43:17 @monitor.py:310][0m SummaryGradient/fc-v/b/rms: 0.0052906
+[32m[1003 07:43:17 @monitor.py:310][0m SummaryGradient/fc0/W/rms: 1.5187e-05
+[32m[1003 07:43:17 @monitor.py:310][0m SummaryGradient/fc0/b/rms: 9.148e-05
+[32m[1003 07:43:17 @monitor.py:310][0m SummaryGradient/prelu/alpha/rms: 0.012405
+[32m[1003 07:43:17 @monitor.py:310][0m cost: -0.012662
+[32m[1003 07:43:17 @monitor.py:310][0m importance: 1
+[32m[1003 07:43:17 @monitor.py:310][0m input_queue_size: 0
+[32m[1003 07:43:17 @monitor.py:310][0m learning_rate: 0.0003
+[32m[1003 07:43:17 @monitor.py:310][0m policy_loss: -0.0841
+[32m[1003 07:43:17 @monitor.py:310][0m predict_reward: 0.29964
+[32m[1003 07:43:17 @monitor.py:310][0m rms_advantage: 0.043052
+[32m[1003 07:43:17 @monitor.py:310][0m value_loss: 0.27601
+[32m[1003 07:43:17 @monitor.py:310][0m xentropy_loss: -181.27
+[32m[1003 07:43:17 @base.py:189][0m Start Epoch 37 ...
+[32m[1003 08:29:46 @base.py:199][0m Epoch 37 (global_step 44400) finished, time:2789.09 sec.
+[32m[1003 08:29:46 @saver.py:85][0m Model saved to train_log/train-unity3d-navigation_v3_rand_move_seg/model-44400.
+[32m[1003 08:29:46 @monitor.py:310][0m SummaryGradient/conv0/W/rms: 0.00044917
+[32m[1003 08:29:46 @monitor.py:310][0m SummaryGradient/conv0/b/rms: 0.0018025
+[32m[1003 08:29:46 @monitor.py:310][0m SummaryGradient/conv1/W/rms: 0.0003027
+[32m[1003 08:29:46 @monitor.py:310][0m SummaryGradient/conv1/b/rms: 0.0012662
+[32m[1003 08:29:46 @monitor.py:310][0m SummaryGradient/conv2/W/rms: 0.00025795
+[32m[1003 08:29:46 @monitor.py:310][0m SummaryGradient/conv2/b/rms: 0.0012895
+[32m[1003 08:29:46 @monitor.py:310][0m SummaryGradient/conv3/W/rms: 0.00029155
+[32m[1003 08:29:46 @monitor.py:310][0m SummaryGradient/conv3/b/rms: 0.0014534
+[32m[1003 08:29:46 @monitor.py:310][0m SummaryGradient/fc-pi/W/rms: 0.0010434
+[32m[1003 08:29:46 @monitor.py:310][0m SummaryGradient/fc-pi/b/rms: 0.0031193
+[32m[1003 08:29:46 @monitor.py:310][0m SummaryGradient/fc-v/W/rms: 0.0052956
+[32m[1003 08:29:46 @monitor.py:310][0m SummaryGradient/fc-v/b/rms: 0.015852
+[32m[1003 08:29:46 @monitor.py:310][0m SummaryGradient/fc0/W/rms: 3.2327e-05
+[32m[1003 08:29:46 @monitor.py:310][0m SummaryGradient/fc0/b/rms: 0.00022183
+[32m[1003 08:29:46 @monitor.py:310][0m SummaryGradient/prelu/alpha/rms: 0.033788
+[32m[1003 08:29:46 @monitor.py:310][0m cost: -0.003584
+[32m[1003 08:29:46 @monitor.py:310][0m importance: 0.99998
+[32m[1003 08:29:46 @monitor.py:310][0m input_queue_size: 0
+[32m[1003 08:29:46 @monitor.py:310][0m learning_rate: 0.0003
+[32m[1003 08:29:46 @monitor.py:310][0m policy_loss: -0.12407
+[32m[1003 08:29:46 @monitor.py:310][0m predict_reward: 0.17582
+[32m[1003 08:29:46 @monitor.py:310][0m rms_advantage: 0.092061
+[32m[1003 08:29:46 @monitor.py:310][0m value_loss: 1.481
+[32m[1003 08:29:46 @monitor.py:310][0m xentropy_loss: -181.57
+[32m[1003 08:29:46 @base.py:189][0m Start Epoch 38 ...
+[32m[1003 09:15:46 @base.py:199][0m Epoch 38 (global_step 45600) finished, time:2759.62 sec.
+[32m[1003 09:15:46 @saver.py:85][0m Model saved to train_log/train-unity3d-navigation_v3_rand_move_seg/model-45600.
+[32m[1003 09:15:46 @monitor.py:310][0m SummaryGradient/conv0/W/rms: 0.0011798
+[32m[1003 09:15:46 @monitor.py:310][0m SummaryGradient/conv0/b/rms: 0.0059313
+[32m[1003 09:15:46 @monitor.py:310][0m SummaryGradient/conv1/W/rms: 0.00086778
+[32m[1003 09:15:46 @monitor.py:310][0m SummaryGradient/conv1/b/rms: 0.0041719
+[32m[1003 09:15:46 @monitor.py:310][0m SummaryGradient/conv2/W/rms: 0.00075515
+[32m[1003 09:15:46 @monitor.py:310][0m SummaryGradient/conv2/b/rms: 0.0032623
+[32m[1003 09:15:46 @monitor.py:310][0m SummaryGradient/conv3/W/rms: 0.000715
+[32m[1003 09:15:46 @monitor.py:310][0m SummaryGradient/conv3/b/rms: 0.0033679
+[32m[1003 09:15:46 @monitor.py:310][0m SummaryGradient/fc-pi/W/rms: 0.0033337
+[32m[1003 09:15:46 @monitor.py:310][0m SummaryGradient/fc-pi/b/rms: 0.0044094
+[32m[1003 09:15:46 @monitor.py:310][0m SummaryGradient/fc-v/W/rms: 0.0078303
+[32m[1003 09:15:46 @monitor.py:310][0m SummaryGradient/fc-v/b/rms: 0.011761
+[32m[1003 09:15:46 @monitor.py:310][0m SummaryGradient/fc0/W/rms: 9.1694e-05
+[32m[1003 09:15:46 @monitor.py:310][0m SummaryGradient/fc0/b/rms: 0.00046651
+[32m[1003 09:15:46 @monitor.py:310][0m SummaryGradient/prelu/alpha/rms: 0.018991
+[32m[1003 09:15:46 @monitor.py:310][0m cost: 0.020316
+[32m[1003 09:15:46 @monitor.py:310][0m importance: 0.99991
+[32m[1003 09:15:46 @monitor.py:310][0m input_queue_size: 0
+[32m[1003 09:15:46 @monitor.py:310][0m learning_rate: 0.0003
+[32m[1003 09:15:46 @monitor.py:310][0m policy_loss: -0.59942
+[32m[1003 09:15:46 @monitor.py:310][0m predict_reward: 0.29622
+[32m[1003 09:15:46 @monitor.py:310][0m rms_advantage: 0.13675
+[32m[1003 09:15:46 @monitor.py:310][0m value_loss: 5.0083
+[32m[1003 09:15:46 @monitor.py:310][0m xentropy_loss: -180.85
+[32m[1003 09:15:46 @base.py:189][0m Start Epoch 39 ...
+[32m[1003 10:04:47 @base.py:199][0m Epoch 39 (global_step 46800) finished, time:2941.52 sec.
+[32m[1003 10:04:47 @saver.py:85][0m Model saved to train_log/train-unity3d-navigation_v3_rand_move_seg/model-46800.
+[32m[1003 10:04:47 @monitor.py:310][0m SummaryGradient/conv0/W/rms: 0.00027332
+[32m[1003 10:04:47 @monitor.py:310][0m SummaryGradient/conv0/b/rms: 0.001173
+[32m[1003 10:04:47 @monitor.py:310][0m SummaryGradient/conv1/W/rms: 0.00015201
+[32m[1003 10:04:47 @monitor.py:310][0m SummaryGradient/conv1/b/rms: 0.00089931
+[32m[1003 10:04:47 @monitor.py:310][0m SummaryGradient/conv2/W/rms: 0.00014866
+[32m[1003 10:04:47 @monitor.py:310][0m SummaryGradient/conv2/b/rms: 0.00089577
+[32m[1003 10:04:47 @monitor.py:310][0m SummaryGradient/conv3/W/rms: 0.00014983
+[32m[1003 10:04:47 @monitor.py:310][0m SummaryGradient/conv3/b/rms: 0.0010652
+[32m[1003 10:04:47 @monitor.py:310][0m SummaryGradient/fc-pi/W/rms: 0.00043293
+[32m[1003 10:04:47 @monitor.py:310][0m SummaryGradient/fc-pi/b/rms: 0.0018685
+[32m[1003 10:04:47 @monitor.py:310][0m SummaryGradient/fc-v/W/rms: 0.0019963
+[32m[1003 10:04:47 @monitor.py:310][0m SummaryGradient/fc-v/b/rms: 0.0079485
+[32m[1003 10:04:47 @monitor.py:310][0m SummaryGradient/fc0/W/rms: 1.9841e-05
+[32m[1003 10:04:47 @monitor.py:310][0m SummaryGradient/fc0/b/rms: 0.00014517
+[32m[1003 10:04:47 @monitor.py:310][0m SummaryGradient/prelu/alpha/rms: 0.020033
+[32m[1003 10:04:47 @monitor.py:310][0m cost: -0.012426
+[32m[1003 10:04:47 @monitor.py:310][0m importance: 0.99998
+[32m[1003 10:04:47 @monitor.py:310][0m input_queue_size: 0
+[32m[1003 10:04:47 @monitor.py:310][0m learning_rate: 0.0003
+[32m[1003 10:04:47 @monitor.py:310][0m policy_loss: -0.20554
+[32m[1003 10:04:47 @monitor.py:310][0m predict_reward: 0.32679
+[32m[1003 10:04:47 @monitor.py:310][0m rms_advantage: 0.058118
+[32m[1003 10:04:47 @monitor.py:310][0m value_loss: 0.39952
+[32m[1003 10:04:47 @monitor.py:310][0m xentropy_loss: -178.45
+[32m[1003 10:04:47 @base.py:189][0m Start Epoch 40 ...
+[32m[1003 10:53:49 @base.py:199][0m Epoch 40 (global_step 48000) finished, time:2941.38 sec.
+[32m[1003 10:53:49 @saver.py:85][0m Model saved to train_log/train-unity3d-navigation_v3_rand_move_seg/model-48000.
+[32m[1003 10:53:49 @monitor.py:310][0m SummaryGradient/conv0/W/rms: 0.00076831
+[32m[1003 10:53:49 @monitor.py:310][0m SummaryGradient/conv0/b/rms: 0.0025629
+[32m[1003 10:53:49 @monitor.py:310][0m SummaryGradient/conv1/W/rms: 0.0006345
+[32m[1003 10:53:49 @monitor.py:310][0m SummaryGradient/conv1/b/rms: 0.0021397
+[32m[1003 10:53:49 @monitor.py:310][0m SummaryGradient/conv2/W/rms: 0.00041421
+[32m[1003 10:53:49 @monitor.py:310][0m SummaryGradient/conv2/b/rms: 0.0020665
+[32m[1003 10:53:49 @monitor.py:310][0m SummaryGradient/conv3/W/rms: 0.00039689
+[32m[1003 10:53:49 @monitor.py:310][0m SummaryGradient/conv3/b/rms: 0.0019863
+[32m[1003 10:53:49 @monitor.py:310][0m SummaryGradient/fc-pi/W/rms: 0.0010898
+[32m[1003 10:53:49 @monitor.py:310][0m SummaryGradient/fc-pi/b/rms: 0.0031541
+[32m[1003 10:53:49 @monitor.py:310][0m SummaryGradient/fc-v/W/rms: 0.0057527
+[32m[1003 10:53:49 @monitor.py:310][0m SummaryGradient/fc-v/b/rms: 0.012752
+[32m[1003 10:53:49 @monitor.py:310][0m SummaryGradient/fc0/W/rms: 4.7872e-05
+[32m[1003 10:53:49 @monitor.py:310][0m SummaryGradient/fc0/b/rms: 0.00027832
+[32m[1003 10:53:49 @monitor.py:310][0m SummaryGradient/prelu/alpha/rms: 0.034211
+[32m[1003 10:53:49 @monitor.py:310][0m cost: -0.00737
+[32m[1003 10:53:49 @monitor.py:310][0m importance: 0.99992
+[32m[1003 10:53:49 @monitor.py:310][0m input_queue_size: 0
+[32m[1003 10:53:49 @monitor.py:310][0m learning_rate: 0.0003
+[32m[1003 10:53:49 @monitor.py:310][0m policy_loss: -1.2184
+[32m[1003 10:53:49 @monitor.py:310][0m predict_reward: 0.33019
+[32m[1003 10:53:49 @monitor.py:310][0m rms_advantage: 0.10036
+[32m[1003 10:53:49 @monitor.py:310][0m value_loss: 2.053
+[32m[1003 10:53:49 @monitor.py:310][0m xentropy_loss: -177.79
+[32m[1003 10:53:49 @base.py:189][0m Start Epoch 41 ...
+[32m[1003 11:43:44 @base.py:199][0m Epoch 41 (global_step 49200) finished, time:2995.17 sec.
+[32m[1003 11:43:44 @saver.py:85][0m Model saved to train_log/train-unity3d-navigation_v3_rand_move_seg/model-49200.
+[32m[1003 11:43:44 @monitor.py:310][0m SummaryGradient/conv0/W/rms: 0.00025088
+[32m[1003 11:43:44 @monitor.py:310][0m SummaryGradient/conv0/b/rms: 0.0011082
+[32m[1003 11:43:44 @monitor.py:310][0m SummaryGradient/conv1/W/rms: 0.00016288
+[32m[1003 11:43:44 @monitor.py:310][0m SummaryGradient/conv1/b/rms: 0.0010491
+[32m[1003 11:43:44 @monitor.py:310][0m SummaryGradient/conv2/W/rms: 0.00017524
+[32m[1003 11:43:44 @monitor.py:310][0m SummaryGradient/conv2/b/rms: 0.0010988
+[32m[1003 11:43:44 @monitor.py:310][0m SummaryGradient/conv3/W/rms: 0.00017425
+[32m[1003 11:43:44 @monitor.py:310][0m SummaryGradient/conv3/b/rms: 0.0012784
+[32m[1003 11:43:44 @monitor.py:310][0m SummaryGradient/fc-pi/W/rms: 0.00054146
+[32m[1003 11:43:44 @monitor.py:310][0m SummaryGradient/fc-pi/b/rms: 0.0017573
+[32m[1003 11:43:44 @monitor.py:310][0m SummaryGradient/fc-v/W/rms: 0.002934
+[32m[1003 11:43:44 @monitor.py:310][0m SummaryGradient/fc-v/b/rms: 0.0080458
+[32m[1003 11:43:44 @monitor.py:310][0m SummaryGradient/fc0/W/rms: 2.2296e-05
+[32m[1003 11:43:44 @monitor.py:310][0m SummaryGradient/fc0/b/rms: 0.00014372
+[32m[1003 11:43:44 @monitor.py:310][0m SummaryGradient/prelu/alpha/rms: 0.027627
+[32m[1003 11:43:44 @monitor.py:310][0m cost: -0.015443
+[32m[1003 11:43:44 @monitor.py:310][0m importance: 1
+[32m[1003 11:43:44 @monitor.py:310][0m input_queue_size: 0
+[32m[1003 11:43:44 @monitor.py:310][0m learning_rate: 0.0003
+[32m[1003 11:43:44 @monitor.py:310][0m policy_loss: -0.80893
+[32m[1003 11:43:44 @monitor.py:310][0m predict_reward: 0.32306
+[32m[1003 11:43:44 @monitor.py:310][0m rms_advantage: 0.062852
+[32m[1003 11:43:44 @monitor.py:310][0m value_loss: 0.61978
+[32m[1003 11:43:44 @monitor.py:310][0m xentropy_loss: -178.76
+[32m[1003 11:43:44 @base.py:189][0m Start Epoch 42 ...
+[32m[1003 12:34:08 @base.py:199][0m Epoch 42 (global_step 50400) finished, time:3023.64 sec.
+[32m[1003 12:34:08 @saver.py:85][0m Model saved to train_log/train-unity3d-navigation_v3_rand_move_seg/model-50400.
+[32m[1003 12:34:08 @monitor.py:310][0m SummaryGradient/conv0/W/rms: 0.00021592
+[32m[1003 12:34:08 @monitor.py:310][0m SummaryGradient/conv0/b/rms: 0.00095766
+[32m[1003 12:34:08 @monitor.py:310][0m SummaryGradient/conv1/W/rms: 0.00016269
+[32m[1003 12:34:08 @monitor.py:310][0m SummaryGradient/conv1/b/rms: 0.00081218
+[32m[1003 12:34:08 @monitor.py:310][0m SummaryGradient/conv2/W/rms: 0.00016562
+[32m[1003 12:34:08 @monitor.py:310][0m SummaryGradient/conv2/b/rms: 0.0009174
+[32m[1003 12:34:08 @monitor.py:310][0m SummaryGradient/conv3/W/rms: 0.00018016
+[32m[1003 12:34:08 @monitor.py:310][0m SummaryGradient/conv3/b/rms: 0.0012198
+[32m[1003 12:34:08 @monitor.py:310][0m SummaryGradient/fc-pi/W/rms: 0.00065312
+[32m[1003 12:34:08 @monitor.py:310][0m SummaryGradient/fc-pi/b/rms: 0.0018037
+[32m[1003 12:34:08 @monitor.py:310][0m SummaryGradient/fc-v/W/rms: 0.0043636
+[32m[1003 12:34:08 @monitor.py:310][0m SummaryGradient/fc-v/b/rms: 0.012051
+[32m[1003 12:34:08 @monitor.py:310][0m SummaryGradient/fc0/W/rms: 2.4174e-05
+[32m[1003 12:34:08 @monitor.py:310][0m SummaryGradient/fc0/b/rms: 0.00015766
+[32m[1003 12:34:08 @monitor.py:310][0m SummaryGradient/prelu/alpha/rms: 0.026999
+[32m[1003 12:34:08 @monitor.py:310][0m cost: -0.0063884
+[32m[1003 12:34:08 @monitor.py:310][0m importance: 1
+[32m[1003 12:34:08 @monitor.py:310][0m input_queue_size: 0
+[32m[1003 12:34:08 @monitor.py:310][0m learning_rate: 0.0003
+[32m[1003 12:34:08 @monitor.py:310][0m policy_loss: -0.25431
+[32m[1003 12:34:08 @monitor.py:310][0m predict_reward: 0.34463
+[32m[1003 12:34:08 @monitor.py:310][0m rms_advantage: 0.068943
+[32m[1003 12:34:08 @monitor.py:310][0m value_loss: 1.2426
+[32m[1003 12:34:08 @monitor.py:310][0m xentropy_loss: -180.6
+[32m[1003 12:34:08 @base.py:189][0m Start Epoch 43 ...
+[32m[1003 13:24:15 @base.py:199][0m Epoch 43 (global_step 51600) finished, time:3007.74 sec.
+[32m[1003 13:24:15 @saver.py:85][0m Model saved to train_log/train-unity3d-navigation_v3_rand_move_seg/model-51600.
+[32m[1003 13:24:15 @monitor.py:310][0m SummaryGradient/conv0/W/rms: 0.00016086
+[32m[1003 13:24:15 @monitor.py:310][0m SummaryGradient/conv0/b/rms: 0.00057161
+[32m[1003 13:24:15 @monitor.py:310][0m SummaryGradient/conv1/W/rms: 0.00010676
+[32m[1003 13:24:15 @monitor.py:310][0m SummaryGradient/conv1/b/rms: 0.00048411
+[32m[1003 13:24:15 @monitor.py:310][0m SummaryGradient/conv2/W/rms: 0.00010201
+[32m[1003 13:24:15 @monitor.py:310][0m SummaryGradient/conv2/b/rms: 0.00044811
+[32m[1003 13:24:15 @monitor.py:310][0m SummaryGradient/conv3/W/rms: 9.8937e-05
+[32m[1003 13:24:15 @monitor.py:310][0m SummaryGradient/conv3/b/rms: 0.0005467
+[32m[1003 13:24:15 @monitor.py:310][0m SummaryGradient/fc-pi/W/rms: 0.00042762
+[32m[1003 13:24:15 @monitor.py:310][0m SummaryGradient/fc-pi/b/rms: 0.0016375
+[32m[1003 13:24:15 @monitor.py:310][0m SummaryGradient/fc-v/W/rms: 0.0017883
+[32m[1003 13:24:15 @monitor.py:310][0m SummaryGradient/fc-v/b/rms: 0.0064741
+[32m[1003 13:24:15 @monitor.py:310][0m SummaryGradient/fc0/W/rms: 1.4337e-05
+[32m[1003 13:24:15 @monitor.py:310][0m SummaryGradient/fc0/b/rms: 9.7739e-05
+[32m[1003 13:24:15 @monitor.py:310][0m SummaryGradient/prelu/alpha/rms: 0.027619
+[32m[1003 13:24:15 @monitor.py:310][0m cost: -0.012962
+[32m[1003 13:24:15 @monitor.py:310][0m importance: 0.99999
+[32m[1003 13:24:15 @monitor.py:310][0m input_queue_size: 0
+[32m[1003 13:24:15 @monitor.py:310][0m learning_rate: 0.0003
+[32m[1003 13:24:15 @monitor.py:310][0m policy_loss: -0.1841
+[32m[1003 13:24:15 @monitor.py:310][0m predict_reward: 0.36119
+[32m[1003 13:24:15 @monitor.py:310][0m rms_advantage: 0.050305
+[32m[1003 13:24:15 @monitor.py:310][0m value_loss: 0.34334
+[32m[1003 13:24:15 @monitor.py:310][0m xentropy_loss: -181.84
+[32m[1003 13:24:15 @base.py:189][0m Start Epoch 44 ...
+[32m[1003 14:14:35 @base.py:199][0m Epoch 44 (global_step 52800) finished, time:3019.66 sec.
+[32m[1003 14:14:35 @saver.py:85][0m Model saved to train_log/train-unity3d-navigation_v3_rand_move_seg/model-52800.
+[32m[1003 14:14:35 @monitor.py:310][0m SummaryGradient/conv0/W/rms: 0.00021637
+[32m[1003 14:14:35 @monitor.py:310][0m SummaryGradient/conv0/b/rms: 0.00090334
+[32m[1003 14:14:35 @monitor.py:310][0m SummaryGradient/conv1/W/rms: 0.0001472
+[32m[1003 14:14:35 @monitor.py:310][0m SummaryGradient/conv1/b/rms: 0.0006882
+[32m[1003 14:14:35 @monitor.py:310][0m SummaryGradient/conv2/W/rms: 0.00014278
+[32m[1003 14:14:35 @monitor.py:310][0m SummaryGradient/conv2/b/rms: 0.00074705
+[32m[1003 14:14:35 @monitor.py:310][0m SummaryGradient/conv3/W/rms: 0.00013445
+[32m[1003 14:14:35 @monitor.py:310][0m SummaryGradient/conv3/b/rms: 0.00089516
+[32m[1003 14:14:35 @monitor.py:310][0m SummaryGradient/fc-pi/W/rms: 0.00066969
+[32m[1003 14:14:35 @monitor.py:310][0m SummaryGradient/fc-pi/b/rms: 0.0024407
+[32m[1003 14:14:35 @monitor.py:310][0m SummaryGradient/fc-v/W/rms: 0.0026659
+[32m[1003 14:14:35 @monitor.py:310][0m SummaryGradient/fc-v/b/rms: 0.0087966
+[32m[1003 14:14:35 @monitor.py:310][0m SummaryGradient/fc0/W/rms: 2.5155e-05
+[32m[1003 14:14:35 @monitor.py:310][0m SummaryGradient/fc0/b/rms: 0.00015736
+[32m[1003 14:14:35 @monitor.py:310][0m SummaryGradient/prelu/alpha/rms: 0.034454
+[32m[1003 14:14:35 @monitor.py:310][0m cost: -0.013914
+[32m[1003 14:14:35 @monitor.py:310][0m importance: 1
+[32m[1003 14:14:35 @monitor.py:310][0m input_queue_size: 0
+[32m[1003 14:14:35 @monitor.py:310][0m learning_rate: 0.0003
+[32m[1003 14:14:35 @monitor.py:310][0m policy_loss: -0.82255
+[32m[1003 14:14:35 @monitor.py:310][0m predict_reward: 0.35289
+[32m[1003 14:14:35 @monitor.py:310][0m rms_advantage: 0.074292
+[32m[1003 14:14:35 @monitor.py:310][0m value_loss: 0.85985
+[32m[1003 14:14:35 @monitor.py:310][0m xentropy_loss: -181.83
+[32m[1003 14:14:35 @base.py:189][0m Start Epoch 45 ...
+[32m[1003 15:05:05 @base.py:199][0m Epoch 45 (global_step 54000) finished, time:3030.10 sec.
+[32m[1003 15:05:05 @saver.py:85][0m Model saved to train_log/train-unity3d-navigation_v3_rand_move_seg/model-54000.
+[32m[1003 15:05:05 @monitor.py:310][0m SummaryGradient/conv0/W/rms: 0.0001636
+[32m[1003 15:05:05 @monitor.py:310][0m SummaryGradient/conv0/b/rms: 0.00064307
+[32m[1003 15:05:05 @monitor.py:310][0m SummaryGradient/conv1/W/rms: 9.6323e-05
+[32m[1003 15:05:05 @monitor.py:310][0m SummaryGradient/conv1/b/rms: 0.00046854
+[32m[1003 15:05:05 @monitor.py:310][0m SummaryGradient/conv2/W/rms: 9.7202e-05
+[32m[1003 15:05:05 @monitor.py:310][0m SummaryGradient/conv2/b/rms: 0.00047375
+[32m[1003 15:05:05 @monitor.py:310][0m SummaryGradient/conv3/W/rms: 0.00010917
+[32m[1003 15:05:05 @monitor.py:310][0m SummaryGradient/conv3/b/rms: 0.00061534
+[32m[1003 15:05:05 @monitor.py:310][0m SummaryGradient/fc-pi/W/rms: 0.0004303
+[32m[1003 15:05:05 @monitor.py:310][0m SummaryGradient/fc-pi/b/rms: 0.0017062
+[32m[1003 15:05:05 @monitor.py:310][0m SummaryGradient/fc-v/W/rms: 0.0016651
+[32m[1003 15:05:05 @monitor.py:310][0m SummaryGradient/fc-v/b/rms: 0.0051482
+[32m[1003 15:05:05 @monitor.py:310][0m SummaryGradient/fc0/W/rms: 1.5642e-05
+[32m[1003 15:05:05 @monitor.py:310][0m SummaryGradient/fc0/b/rms: 9.7649e-05
+[32m[1003 15:05:05 @monitor.py:310][0m SummaryGradient/prelu/alpha/rms: 0.024676
+[32m[1003 15:05:05 @monitor.py:310][0m cost: -0.014139
+[32m[1003 15:05:05 @monitor.py:310][0m importance: 1
+[32m[1003 15:05:05 @monitor.py:310][0m input_queue_size: 0
+[32m[1003 15:05:05 @monitor.py:310][0m learning_rate: 0.0003
+[32m[1003 15:05:05 @monitor.py:310][0m policy_loss: -0.2245
+[32m[1003 15:05:05 @monitor.py:310][0m predict_reward: 0.35518
+[32m[1003 15:05:05 @monitor.py:310][0m rms_advantage: 0.047594
+[32m[1003 15:05:05 @monitor.py:310][0m value_loss: 0.23197
+[32m[1003 15:05:05 @monitor.py:310][0m xentropy_loss: -181.72
+[32m[1003 15:05:05 @base.py:189][0m Start Epoch 46 ...
+[32m[1003 15:55:52 @base.py:199][0m Epoch 46 (global_step 55200) finished, time:3046.65 sec.
+[32m[1003 15:55:52 @saver.py:85][0m Model saved to train_log/train-unity3d-navigation_v3_rand_move_seg/model-55200.
+[32m[1003 15:55:52 @monitor.py:310][0m SummaryGradient/conv0/W/rms: 0.00016327
+[32m[1003 15:55:52 @monitor.py:310][0m SummaryGradient/conv0/b/rms: 0.00060215
+[32m[1003 15:55:52 @monitor.py:310][0m SummaryGradient/conv1/W/rms: 0.00010259
+[32m[1003 15:55:52 @monitor.py:310][0m SummaryGradient/conv1/b/rms: 0.000516
+[32m[1003 15:55:52 @monitor.py:310][0m SummaryGradient/conv2/W/rms: 0.00010861
+[32m[1003 15:55:52 @monitor.py:310][0m SummaryGradient/conv2/b/rms: 0.00062345
+[32m[1003 15:55:52 @monitor.py:310][0m SummaryGradient/conv3/W/rms: 0.00011038
+[32m[1003 15:55:52 @monitor.py:310][0m SummaryGradient/conv3/b/rms: 0.00074347
+[32m[1003 15:55:52 @monitor.py:310][0m SummaryGradient/fc-pi/W/rms: 0.00040153
+[32m[1003 15:55:52 @monitor.py:310][0m SummaryGradient/fc-pi/b/rms: 0.0014861
+[32m[1003 15:55:52 @monitor.py:310][0m SummaryGradient/fc-v/W/rms: 0.001862
+[32m[1003 15:55:52 @monitor.py:310][0m SummaryGradient/fc-v/b/rms: 0.0065663
+[32m[1003 15:55:52 @monitor.py:310][0m SummaryGradient/fc0/W/rms: 1.6552e-05
+[32m[1003 15:55:52 @monitor.py:310][0m SummaryGradient/fc0/b/rms: 0.00010902
+[32m[1003 15:55:52 @monitor.py:310][0m SummaryGradient/prelu/alpha/rms: 0.023347
+[32m[1003 15:55:52 @monitor.py:310][0m cost: -0.010765
+[32m[1003 15:55:52 @monitor.py:310][0m importance: 1
+[32m[1003 15:55:52 @monitor.py:310][0m input_queue_size: 0
+[32m[1003 15:55:52 @monitor.py:310][0m learning_rate: 0.0003
+[32m[1003 15:55:52 @monitor.py:310][0m policy_loss: 0.18396
+[32m[1003 15:55:52 @monitor.py:310][0m predict_reward: 0.35085
+[32m[1003 15:55:52 @monitor.py:310][0m rms_advantage: 0.050912
+[32m[1003 15:55:52 @monitor.py:310][0m value_loss: 0.22951
+[32m[1003 15:55:52 @monitor.py:310][0m xentropy_loss: -179.14
+[32m[1003 15:55:52 @base.py:189][0m Start Epoch 47 ...
+[32m[1003 16:46:28 @base.py:199][0m Epoch 47 (global_step 56400) finished, time:3036.27 sec.
+[32m[1003 16:46:28 @saver.py:85][0m Model saved to train_log/train-unity3d-navigation_v3_rand_move_seg/model-56400.
+[32m[1003 16:46:28 @monitor.py:310][0m SummaryGradient/conv0/W/rms: 0.00021113
+[32m[1003 16:46:28 @monitor.py:310][0m SummaryGradient/conv0/b/rms: 0.00072136
+[32m[1003 16:46:28 @monitor.py:310][0m SummaryGradient/conv1/W/rms: 0.0001585
+[32m[1003 16:46:28 @monitor.py:310][0m SummaryGradient/conv1/b/rms: 0.00060625
+[32m[1003 16:46:28 @monitor.py:310][0m SummaryGradient/conv2/W/rms: 0.00017026
+[32m[1003 16:46:28 @monitor.py:310][0m SummaryGradient/conv2/b/rms: 0.00070812
+[32m[1003 16:46:28 @monitor.py:310][0m SummaryGradient/conv3/W/rms: 0.00015951
+[32m[1003 16:46:28 @monitor.py:310][0m SummaryGradient/conv3/b/rms: 0.00079216
+[32m[1003 16:46:28 @monitor.py:310][0m SummaryGradient/fc-pi/W/rms: 0.00057473
+[32m[1003 16:46:28 @monitor.py:310][0m SummaryGradient/fc-pi/b/rms: 0.002041
+[32m[1003 16:46:28 @monitor.py:310][0m SummaryGradient/fc-v/W/rms: 0.003172
+[32m[1003 16:46:28 @monitor.py:310][0m SummaryGradient/fc-v/b/rms: 0.0082302
+[32m[1003 16:46:28 @monitor.py:310][0m SummaryGradient/fc0/W/rms: 2.2655e-05
+[32m[1003 16:46:28 @monitor.py:310][0m SummaryGradient/fc0/b/rms: 0.00013066
+[32m[1003 16:46:28 @monitor.py:310][0m SummaryGradient/prelu/alpha/rms: 0.029405
+[32m[1003 16:46:28 @monitor.py:310][0m cost: -0.0101
+[32m[1003 16:46:28 @monitor.py:310][0m importance: 0.99995
+[32m[1003 16:46:28 @monitor.py:310][0m input_queue_size: 0
+[32m[1003 16:46:28 @monitor.py:310][0m learning_rate: 0.0003
+[32m[1003 16:46:28 @monitor.py:310][0m policy_loss: -0.33348
+[32m[1003 16:46:28 @monitor.py:310][0m predict_reward: 0.30933
+[32m[1003 16:46:28 @monitor.py:310][0m rms_advantage: 0.059114
+[32m[1003 16:46:28 @monitor.py:310][0m value_loss: 0.82838
+[32m[1003 16:46:28 @monitor.py:310][0m xentropy_loss: -178.77
+[32m[1003 16:46:28 @base.py:189][0m Start Epoch 48 ...
+[32m[1003 17:37:24 @base.py:199][0m Epoch 48 (global_step 57600) finished, time:3056.15 sec.
+[32m[1003 17:37:24 @saver.py:85][0m Model saved to train_log/train-unity3d-navigation_v3_rand_move_seg/model-57600.
+[32m[1003 17:37:24 @monitor.py:310][0m SummaryGradient/conv0/W/rms: 0.00011266
+[32m[1003 17:37:24 @monitor.py:310][0m SummaryGradient/conv0/b/rms: 0.00059869
+[32m[1003 17:37:24 @monitor.py:310][0m SummaryGradient/conv1/W/rms: 7.872e-05
+[32m[1003 17:37:24 @monitor.py:310][0m SummaryGradient/conv1/b/rms: 0.00035067
+[32m[1003 17:37:24 @monitor.py:310][0m SummaryGradient/conv2/W/rms: 7.7305e-05
+[32m[1003 17:37:24 @monitor.py:310][0m SummaryGradient/conv2/b/rms: 0.000324
+[32m[1003 17:37:24 @monitor.py:310][0m SummaryGradient/conv3/W/rms: 8.7072e-05
+[32m[1003 17:37:24 @monitor.py:310][0m SummaryGradient/conv3/b/rms: 0.00038743
+[32m[1003 17:37:24 @monitor.py:310][0m SummaryGradient/fc-pi/W/rms: 0.00033617
+[32m[1003 17:37:24 @monitor.py:310][0m SummaryGradient/fc-pi/b/rms: 0.0012555
+[32m[1003 17:37:24 @monitor.py:310][0m SummaryGradient/fc-v/W/rms: 0.0015402
+[32m[1003 17:37:24 @monitor.py:310][0m SummaryGradient/fc-v/b/rms: 0.0051067
+[32m[1003 17:37:24 @monitor.py:310][0m SummaryGradient/fc0/W/rms: 1.4198e-05
+[32m[1003 17:37:24 @monitor.py:310][0m SummaryGradient/fc0/b/rms: 7.2388e-05
+[32m[1003 17:37:24 @monitor.py:310][0m SummaryGradient/prelu/alpha/rms: 0.022576
+[32m[1003 17:37:24 @monitor.py:310][0m cost: -0.014323
+[32m[1003 17:37:24 @monitor.py:310][0m importance: 1
+[32m[1003 17:37:24 @monitor.py:310][0m input_queue_size: 0
+[32m[1003 17:37:24 @monitor.py:310][0m learning_rate: 0.0003
+[32m[1003 17:37:24 @monitor.py:310][0m policy_loss: -0.20814
+[32m[1003 17:37:24 @monitor.py:310][0m predict_reward: 0.39312
+[32m[1003 17:37:24 @monitor.py:310][0m rms_advantage: 0.039147
+[32m[1003 17:37:24 @monitor.py:310][0m value_loss: 0.16843
+[32m[1003 17:37:24 @monitor.py:310][0m xentropy_loss: -179.36
+[32m[1003 17:37:24 @base.py:189][0m Start Epoch 49 ...
+[32m[1003 18:28:02 @base.py:199][0m Epoch 49 (global_step 58800) finished, time:3037.72 sec.
+[32m[1003 18:28:02 @saver.py:85][0m Model saved to train_log/train-unity3d-navigation_v3_rand_move_seg/model-58800.
+[32m[1003 18:28:02 @monitor.py:310][0m SummaryGradient/conv0/W/rms: 9.6128e-05
+[32m[1003 18:28:02 @monitor.py:310][0m SummaryGradient/conv0/b/rms: 0.00034631
+[32m[1003 18:28:02 @monitor.py:310][0m SummaryGradient/conv1/W/rms: 6.1788e-05
+[32m[1003 18:28:02 @monitor.py:310][0m SummaryGradient/conv1/b/rms: 0.00025277
+[32m[1003 18:28:02 @monitor.py:310][0m SummaryGradient/conv2/W/rms: 6.0736e-05
+[32m[1003 18:28:02 @monitor.py:310][0m SummaryGradient/conv2/b/rms: 0.00033362
+[32m[1003 18:28:02 @monitor.py:310][0m SummaryGradient/conv3/W/rms: 6.8029e-05
+[32m[1003 18:28:02 @monitor.py:310][0m SummaryGradient/conv3/b/rms: 0.00038297
+[32m[1003 18:28:02 @monitor.py:310][0m SummaryGradient/fc-pi/W/rms: 0.00029879
+[32m[1003 18:28:02 @monitor.py:310][0m SummaryGradient/fc-pi/b/rms: 0.0012388
+[32m[1003 18:28:02 @monitor.py:310][0m SummaryGradient/fc-v/W/rms: 0.0011577
+[32m[1003 18:28:02 @monitor.py:310][0m SummaryGradient/fc-v/b/rms: 0.0036976
+[32m[1003 18:28:02 @monitor.py:310][0m SummaryGradient/fc0/W/rms: 1.1385e-05
+[32m[1003 18:28:02 @monitor.py:310][0m SummaryGradient/fc0/b/rms: 6.6523e-05
+[32m[1003 18:28:02 @monitor.py:310][0m SummaryGradient/prelu/alpha/rms: 0.016992
+[32m[1003 18:28:02 @monitor.py:310][0m cost: -0.012384
+[32m[1003 18:28:02 @monitor.py:310][0m importance: 0.99999
+[32m[1003 18:28:02 @monitor.py:310][0m input_queue_size: 0
+[32m[1003 18:28:02 @monitor.py:310][0m learning_rate: 0.0003
+[32m[1003 18:28:02 @monitor.py:310][0m policy_loss: 0.12534
+[32m[1003 18:28:02 @monitor.py:310][0m predict_reward: 0.39978
+[32m[1003 18:28:02 @monitor.py:310][0m rms_advantage: 0.036021
+[32m[1003 18:28:02 @monitor.py:310][0m value_loss: 0.10877
+[32m[1003 18:28:02 @monitor.py:310][0m xentropy_loss: -181.93
+[32m[1003 18:28:02 @base.py:189][0m Start Epoch 50 ...
+[32m[1003 19:18:48 @base.py:199][0m Epoch 50 (global_step 60000) finished, time:3045.40 sec.
+[32m[1003 19:18:48 @saver.py:85][0m Model saved to train_log/train-unity3d-navigation_v3_rand_move_seg/model-60000.
+[32m[1003 19:18:48 @monitor.py:310][0m SummaryGradient/conv0/W/rms: 0.00025693
+[32m[1003 19:18:48 @monitor.py:310][0m SummaryGradient/conv0/b/rms: 0.00088943
+[32m[1003 19:18:48 @monitor.py:310][0m SummaryGradient/conv1/W/rms: 0.00020806
+[32m[1003 19:18:48 @monitor.py:310][0m SummaryGradient/conv1/b/rms: 0.00073584
+[32m[1003 19:18:48 @monitor.py:310][0m SummaryGradient/conv2/W/rms: 0.00016952
+[32m[1003 19:18:48 @monitor.py:310][0m SummaryGradient/conv2/b/rms: 0.00079924
+[32m[1003 19:18:48 @monitor.py:310][0m SummaryGradient/conv3/W/rms: 0.00016554
+[32m[1003 19:18:48 @monitor.py:310][0m SummaryGradient/conv3/b/rms: 0.00082002
+[32m[1003 19:18:48 @monitor.py:310][0m SummaryGradient/fc-pi/W/rms: 0.00058785
+[32m[1003 19:18:48 @monitor.py:310][0m SummaryGradient/fc-pi/b/rms: 0.0020417
+[32m[1003 19:18:48 @monitor.py:310][0m SummaryGradient/fc-v/W/rms: 0.0028588
+[32m[1003 19:18:48 @monitor.py:310][0m SummaryGradient/fc-v/b/rms: 0.0070625
+[32m[1003 19:18:48 @monitor.py:310][0m SummaryGradient/fc0/W/rms: 2.1599e-05
+[32m[1003 19:18:48 @monitor.py:310][0m SummaryGradient/fc0/b/rms: 0.0001307
+[32m[1003 19:18:48 @monitor.py:310][0m SummaryGradient/prelu/alpha/rms: 0.021957
+[32m[1003 19:18:48 @monitor.py:310][0m cost: -0.0089701
+[32m[1003 19:18:48 @monitor.py:310][0m importance: 1
+[32m[1003 19:18:48 @monitor.py:310][0m input_queue_size: 0
+[32m[1003 19:18:48 @monitor.py:310][0m learning_rate: 0.0003
+[32m[1003 19:18:48 @monitor.py:310][0m policy_loss: -0.023769
+[32m[1003 19:18:48 @monitor.py:310][0m predict_reward: 0.35424
+[32m[1003 19:18:48 @monitor.py:310][0m rms_advantage: 0.059468
+[32m[1003 19:18:48 @monitor.py:310][0m value_loss: 0.70449
+[32m[1003 19:18:48 @monitor.py:310][0m xentropy_loss: -182.89
+[32m[1003 19:18:48 @base.py:189][0m Start Epoch 51 ...
+[32m[1003 20:09:35 @base.py:199][0m Epoch 51 (global_step 61200) finished, time:3047.00 sec.
+[32m[1003 20:09:35 @saver.py:85][0m Model saved to train_log/train-unity3d-navigation_v3_rand_move_seg/model-61200.
+[32m[1003 20:09:35 @monitor.py:310][0m SummaryGradient/conv0/W/rms: 0.0001144
+[32m[1003 20:09:35 @monitor.py:310][0m SummaryGradient/conv0/b/rms: 0.00051667
+[32m[1003 20:09:35 @monitor.py:310][0m SummaryGradient/conv1/W/rms: 8.512e-05
+[32m[1003 20:09:35 @monitor.py:310][0m SummaryGradient/conv1/b/rms: 0.00038842
+[32m[1003 20:09:35 @monitor.py:310][0m SummaryGradient/conv2/W/rms: 8.2822e-05
+[32m[1003 20:09:35 @monitor.py:310][0m SummaryGradient/conv2/b/rms: 0.00043692
+[32m[1003 20:09:35 @monitor.py:310][0m SummaryGradient/conv3/W/rms: 8.6035e-05
+[32m[1003 20:09:35 @monitor.py:310][0m SummaryGradient/conv3/b/rms: 0.00043848
+[32m[1003 20:09:35 @monitor.py:310][0m SummaryGradient/fc-pi/W/rms: 0.00031092
+[32m[1003 20:09:35 @monitor.py:310][0m SummaryGradient/fc-pi/b/rms: 0.0012972
+[32m[1003 20:09:35 @monitor.py:310][0m SummaryGradient/fc-v/W/rms: 0.001441
+[32m[1003 20:09:35 @monitor.py:310][0m SummaryGradient/fc-v/b/rms: 0.0046344
+[32m[1003 20:09:35 @monitor.py:310][0m SummaryGradient/fc0/W/rms: 1.3671e-05
+[32m[1003 20:09:35 @monitor.py:310][0m SummaryGradient/fc0/b/rms: 7.662e-05
+[32m[1003 20:09:35 @monitor.py:310][0m SummaryGradient/prelu/alpha/rms: 0.021427
+[32m[1003 20:09:35 @monitor.py:310][0m cost: -0.011406
+[32m[1003 20:09:35 @monitor.py:310][0m importance: 1
+[32m[1003 20:09:35 @monitor.py:310][0m input_queue_size: 0
+[32m[1003 20:09:35 @monitor.py:310][0m learning_rate: 0.0003
+[32m[1003 20:09:35 @monitor.py:310][0m policy_loss: 0.15262
+[32m[1003 20:09:35 @monitor.py:310][0m predict_reward: 0.382
+[32m[1003 20:09:35 @monitor.py:310][0m rms_advantage: 0.040483
+[32m[1003 20:09:35 @monitor.py:310][0m value_loss: 0.19559
+[32m[1003 20:09:35 @monitor.py:310][0m xentropy_loss: -180.82
+[32m[1003 20:09:35 @base.py:189][0m Start Epoch 52 ...
+[32m[1003 21:00:16 @base.py:199][0m Epoch 52 (global_step 62400) finished, time:3040.88 sec.
+[32m[1003 21:00:16 @saver.py:85][0m Model saved to train_log/train-unity3d-navigation_v3_rand_move_seg/model-62400.
+[32m[1003 21:00:16 @monitor.py:310][0m SummaryGradient/conv0/W/rms: 0.00019592
+[32m[1003 21:00:16 @monitor.py:310][0m SummaryGradient/conv0/b/rms: 0.00075317
+[32m[1003 21:00:16 @monitor.py:310][0m SummaryGradient/conv1/W/rms: 0.00012932
+[32m[1003 21:00:16 @monitor.py:310][0m SummaryGradient/conv1/b/rms: 0.00061293
+[32m[1003 21:00:16 @monitor.py:310][0m SummaryGradient/conv2/W/rms: 0.00011952
+[32m[1003 21:00:16 @monitor.py:310][0m SummaryGradient/conv2/b/rms: 0.00070282
+[32m[1003 21:00:16 @monitor.py:310][0m SummaryGradient/conv3/W/rms: 0.00011987
+[32m[1003 21:00:16 @monitor.py:310][0m SummaryGradient/conv3/b/rms: 0.0008984
+[32m[1003 21:00:16 @monitor.py:310][0m SummaryGradient/fc-pi/W/rms: 0.0004964
+[32m[1003 21:00:16 @monitor.py:310][0m SummaryGradient/fc-pi/b/rms: 0.001878
+[32m[1003 21:00:16 @monitor.py:310][0m SummaryGradient/fc-v/W/rms: 0.0020516
+[32m[1003 21:00:16 @monitor.py:310][0m SummaryGradient/fc-v/b/rms: 0.0068721
+[32m[1003 21:00:16 @monitor.py:310][0m SummaryGradient/fc0/W/rms: 1.9893e-05
+[32m[1003 21:00:16 @monitor.py:310][0m SummaryGradient/fc0/b/rms: 0.00012168
+[32m[1003 21:00:16 @monitor.py:310][0m SummaryGradient/prelu/alpha/rms: 0.022659
+[32m[1003 21:00:16 @monitor.py:310][0m cost: -0.0147
+[32m[1003 21:00:16 @monitor.py:310][0m importance: 1
+[32m[1003 21:00:16 @monitor.py:310][0m input_queue_size: 0
+[32m[1003 21:00:16 @monitor.py:310][0m learning_rate: 0.0003
+[32m[1003 21:00:16 @monitor.py:310][0m policy_loss: -0.48905
+[32m[1003 21:00:16 @monitor.py:310][0m predict_reward: 0.29255
+[32m[1003 21:00:16 @monitor.py:310][0m rms_advantage: 0.05782
+[32m[1003 21:00:16 @monitor.py:310][0m value_loss: 0.39442
+[32m[1003 21:00:16 @monitor.py:310][0m xentropy_loss: -178.69
+[32m[1003 21:00:16 @base.py:189][0m Start Epoch 53 ...
+[32m[1003 21:51:29 @base.py:199][0m Epoch 53 (global_step 63600) finished, time:3073.71 sec.
+[32m[1003 21:51:29 @saver.py:85][0m Model saved to train_log/train-unity3d-navigation_v3_rand_move_seg/model-63600.
+[32m[1003 21:51:29 @monitor.py:310][0m SummaryGradient/conv0/W/rms: 0.00013837
+[32m[1003 21:51:29 @monitor.py:310][0m SummaryGradient/conv0/b/rms: 0.00053907
+[32m[1003 21:51:29 @monitor.py:310][0m SummaryGradient/conv1/W/rms: 9.6163e-05
+[32m[1003 21:51:29 @monitor.py:310][0m SummaryGradient/conv1/b/rms: 0.00041543
+[32m[1003 21:51:29 @monitor.py:310][0m SummaryGradient/conv2/W/rms: 8.335e-05
+[32m[1003 21:51:29 @monitor.py:310][0m SummaryGradient/conv2/b/rms: 0.00049544
+[32m[1003 21:51:29 @monitor.py:310][0m SummaryGradient/conv3/W/rms: 9.032e-05
+[32m[1003 21:51:29 @monitor.py:310][0m SummaryGradient/conv3/b/rms: 0.00063255
+[32m[1003 21:51:29 @monitor.py:310][0m SummaryGradient/fc-pi/W/rms: 0.0003008
+[32m[1003 21:51:29 @monitor.py:310][0m SummaryGradient/fc-pi/b/rms: 0.0013243
+[32m[1003 21:51:29 @monitor.py:310][0m SummaryGradient/fc-v/W/rms: 0.0015895
+[32m[1003 21:51:29 @monitor.py:310][0m SummaryGradient/fc-v/b/rms: 0.006067
+[32m[1003 21:51:29 @monitor.py:310][0m SummaryGradient/fc0/W/rms: 1.3037e-05
+[32m[1003 21:51:29 @monitor.py:310][0m SummaryGradient/fc0/b/rms: 8.9178e-05
+[32m[1003 21:51:29 @monitor.py:310][0m SummaryGradient/prelu/alpha/rms: 0.01597
+[32m[1003 21:51:29 @monitor.py:310][0m cost: -0.013456
+[32m[1003 21:51:29 @monitor.py:310][0m importance: 0.99999
+[32m[1003 21:51:29 @monitor.py:310][0m input_queue_size: 0
+[32m[1003 21:51:29 @monitor.py:310][0m learning_rate: 0.0003
+[32m[1003 21:51:29 @monitor.py:310][0m policy_loss: -0.054276
+[32m[1003 21:51:29 @monitor.py:310][0m predict_reward: 0.3586
+[32m[1003 21:51:29 @monitor.py:310][0m rms_advantage: 0.040372
+[32m[1003 21:51:29 @monitor.py:310][0m value_loss: 0.1655
+[32m[1003 21:51:29 @monitor.py:310][0m xentropy_loss: -183.36
+[32m[1003 21:51:29 @base.py:189][0m Start Epoch 54 ...
+[32m[1003 22:42:13 @base.py:199][0m Epoch 54 (global_step 64800) finished, time:3043.18 sec.
+[32m[1003 22:42:13 @saver.py:85][0m Model saved to train_log/train-unity3d-navigation_v3_rand_move_seg/model-64800.
+[32m[1003 22:42:13 @monitor.py:310][0m SummaryGradient/conv0/W/rms: 0.00011932
+[32m[1003 22:42:13 @monitor.py:310][0m SummaryGradient/conv0/b/rms: 0.00045902
+[32m[1003 22:42:13 @monitor.py:310][0m SummaryGradient/conv1/W/rms: 8.277e-05
+[32m[1003 22:42:13 @monitor.py:310][0m SummaryGradient/conv1/b/rms: 0.00036368
+[32m[1003 22:42:13 @monitor.py:310][0m SummaryGradient/conv2/W/rms: 7.1247e-05
+[32m[1003 22:42:13 @monitor.py:310][0m SummaryGradient/conv2/b/rms: 0.00042438
+[32m[1003 22:42:13 @monitor.py:310][0m SummaryGradient/conv3/W/rms: 7.2279e-05
+[32m[1003 22:42:13 @monitor.py:310][0m SummaryGradient/conv3/b/rms: 0.00050107
+[32m[1003 22:42:13 @monitor.py:310][0m SummaryGradient/fc-pi/W/rms: 0.00034443
+[32m[1003 22:42:13 @monitor.py:310][0m SummaryGradient/fc-pi/b/rms: 0.0011687
+[32m[1003 22:42:13 @monitor.py:310][0m SummaryGradient/fc-v/W/rms: 0.0015828
+[32m[1003 22:42:13 @monitor.py:310][0m SummaryGradient/fc-v/b/rms: 0.004881
+[32m[1003 22:42:13 @monitor.py:310][0m SummaryGradient/fc0/W/rms: 1.159e-05
+[32m[1003 22:42:13 @monitor.py:310][0m SummaryGradient/fc0/b/rms: 7.2856e-05
+[32m[1003 22:42:13 @monitor.py:310][0m SummaryGradient/prelu/alpha/rms: 0.014681
+[32m[1003 22:42:13 @monitor.py:310][0m cost: -0.011623
+[32m[1003 22:42:13 @monitor.py:310][0m importance: 1
+[32m[1003 22:42:13 @monitor.py:310][0m input_queue_size: 0
+[32m[1003 22:42:13 @monitor.py:310][0m learning_rate: 0.0003
+[32m[1003 22:42:13 @monitor.py:310][0m policy_loss: 0.093132
+[32m[1003 22:42:13 @monitor.py:310][0m predict_reward: 0.3413
+[32m[1003 22:42:13 @monitor.py:310][0m rms_advantage: 0.036994
+[32m[1003 22:42:13 @monitor.py:310][0m value_loss: 0.23336
+[32m[1003 22:42:13 @monitor.py:310][0m xentropy_loss: -181.43
+[32m[1003 22:42:13 @base.py:189][0m Start Epoch 55 ...
+[32m[1003 23:27:47 @base.py:207][0m Detected Ctrl-C and exiting main loop.
+[32m[1003 23:27:47 @train-unity3d.py:176][0m Client b'simulator-2' cancelled.
+[32m[1003 23:27:47 @concurrency.py:96][0m [5m[31mWRN[0m In PredictorWorkerThread id=2, call was cancelled.
+[32m[1003 23:27:47 @train-unity3d.py:176][0m Client b'simulator-1' cancelled.
+[32m[1003 23:27:47 @simulator.py:165][0m [Simulator] Context was terminated.
+[32m[1003 23:27:47 @concurrency.py:96][0m [5m[31mWRN[0m In PredictorWorkerThread id=1, call was cancelled.
