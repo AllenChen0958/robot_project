@@ -29,7 +29,7 @@ from common import (play_model, Evaluator, eval_model_multithread,
                     play_one_episode, play_n_episodes)
 
 from unity3d_player import Unity3DPlayer
-
+from collections import deque
 if six.PY3:
     from concurrent import futures
     CancelledError = futures.CancelledError
@@ -128,9 +128,18 @@ def getPredictor(load_path=None, transform=False):
             input_names=['state'],
             output_names=['policy'])
     predfunc = OfflinePredictor(cfg)
+    q = deque()
     def step(state):
-        act = predfunc([[state]])[0][0].argmax() 
-        act = (act,)
+        if len(q)==0:
+            q.extend(np.repeat([state], FRAME_HISTORY, axis=0))
+        else:
+            q.append(state)
+            q.popleft()
+        obs_stack=list(q)
+        print(np.shape(obs_stack))
+        obs_stack = np.concatenate(obs_stack, axis=2)
+        act = predfunc([[obs_stack]])[0][0].argmax() 
+        act = act
         if transform is True:
             act = ACTION_TABLE[act]
         return act

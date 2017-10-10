@@ -203,33 +203,13 @@ if __name__ == '__main__':
     for episode in range(1000):
         obs = env.reset()
         obs = predictor.reszieImage(obs)
-        obs_stack = np.repeat([obs], predictor.FRAME_HISTORY, axis=0)
-        obs_stack = np.concatenate(obs_stack, axis=2)
+        
         for t in range(10000):
-            #env.render()
-            #act = env.sample() * 2.0
-            # act = np.array([0])
-            act = p(obs_stack)
-            act = ACTION_TABLE[act[0]]
-            obs_stack = []
-            for i in range(predictor.FRAME_HISTORY):
-                obs, reward, done, _ = env.step(act, non_block=False)
-                obs = predictor.reszieImage(obs)
-                obs_stack.append(obs)
-            if done is True:
-                    try:
-                        r = np.repeat([obs],predictor.FRAME_HISTORY-len(obs_stack),axis=0)
-                        if len(obs_stack) == 0:
-                            obs_stack = r
-                        elif len(obs_stack) < predictor.FRAME_HISTORY:
-                            obs_stack = np.concatenate((obs_stack, r), axis=0)
-                        break
-                    except ValueError:
-                        print ("obs_stack.shape: {}, r.shape: {}, repeat times: {}, i:{}".format(np.shape(obs_stack),
-                            np.shape(r), predictor.FRAME_HISTORY-len(obs_stack), i))
-                        exit()
-            obs_stack = np.concatenate(obs_stack, axis=2)
-            print (obs_stack.shape)
+            act = p(obs)
+            act = ACTION_TABLE[act]
+            # print (obs.shape)
+            obs, reward, done, _ = env.step(act, non_block=False)
+            obs = predictor.reszieImage(obs)
             print (act, reward, done)
         
             if done:

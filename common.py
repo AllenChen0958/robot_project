@@ -19,7 +19,7 @@ from tensorpack.utils.utils import get_tqdm_kwargs
 def play_one_episode(player, func, verbose=False):
     def f(s):
         spc = player.get_action_space()
-        act = func([[s]])[0][0].argmax() # func is OfflinePredictor
+        act = func([[s]])[0][0].argmax() # func is OfflinePredictor.py in tensorpack/predict/base.py
         if random.random() < 0.001:
             act = spc.sample()
         if verbose:
