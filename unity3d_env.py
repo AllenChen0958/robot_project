@@ -199,14 +199,14 @@ ACTION_TABLE = [(0.0,),
 import predictor
 if __name__ == '__main__':
     env = Unity3DEnvironment()
-    p = predictor.getPredictor("./train_log/train-unity3d-navigation_v3_rand_move_seg/model-64800.index")
+    p = predictor.getPredictor("./train_log/train-unity3d-navigation_v3_rand_move_seg/model-64800.index", True)
     for episode in range(1000):
         obs = env.reset()
         obs = predictor.reszieImage(obs)
         
         for t in range(10000):
             act = p(obs)
-            act = ACTION_TABLE[act]
+            # act = ACTION_TABLE[act]
             # print (obs.shape)
             obs, reward, done, _ = env.step(act, non_block=False)
             obs = predictor.reszieImage(obs)
